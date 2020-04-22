@@ -1,0 +1,117 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - Microblog{% else %}{{ _('Welcome to Microblog') }}{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default" style="background-color: #e3f2fd;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand " href="{{ url_for('main.home') }}">
+                    <img src="{{ url_for('static', filename='img/MySQL-512.png') }}" style="width: 60px;">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    {% if current_user.is_anonymous %}
+                        <li><a href="{{ url_for('main.product') }}">Product</a></li>
+                        <li><a href="{{ url_for('main.cloud') }}">Cloud</a></li>
+                        <li><a href="{{ url_for('main.services') }}">Services </a></li>
+                        <li><a href="{{ url_for('main.product') }}">Why MySQL? </a></li>
+                        <li><a href="{{ url_for('main.product') }}">Customers </a></li>
+                        <li><a href="{{ url_for('main.product') }}">News & Events </a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('main.forum') }}">{{ _('Forum') }}</a></li>
+                        <li><a href="{{ url_for('main.explore') }}">{{ _('Explore') }}</a></li>
+                    {% endif %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_anonymous %}
+                        <li><a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a></li>
+                    {% elif current_user.username == 'admin' %}
+                        <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a>
+                        </li>
+                        <li><a href="{{ url_for('main.database_index') }}">Database Edit</a></li>
+                        <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('main.user', username=current_user.username) }}">{{ _('Profile') }}</a>
+                        </li>
+                        <li><a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {# current_application content needs to be provided in the current_app_content block #}
+        {% block current_app_content %}{% endblock %}
+    </div>
+
+
+
+        <!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+<div class="container text-center">
+    <hr />
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-md-4">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">ABOUT MYSQL</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">How to Buy</a></li>
+          <li><a href="#">Partners</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#">Job Opportunities</a></li>
+          <li><a href="#">Presentations</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="/">© 2020 MYSQL</a></li>
+                <li><a href="https://www.oracle.com/legal/terms.html">Terms of Use</a></li>
+                <li><a href="https://www.oracle.com/legal/privacy/">Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</footer>
+<!-- Footer -->
+
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+    {{ moment.lang(g.locale) }}
+{% endblock %}

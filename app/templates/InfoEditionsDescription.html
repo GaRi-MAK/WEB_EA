@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block current_app_content %}
+    {{ wtf.quick_form(form) }}
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Edition ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if update %}
+            <tr>
+                <td scope="row">{{ description.id }}</td>
+                <td>{{ description.title }}</td>
+                <td>{{ description.content }}</td>
+                <td>{{ description.edition_id}}</td>
+            </tr>
+        {% else %}
+            {% for description in descriptions %}
+                <tr>
+                    <td scope="row">{{ description.id }}</td>
+                    <td>{{ description.title }}</td>
+                    <td>{{ description.content }}</td>
+                    <td>{{ description.edition_id}}</td>
+                    <td>
+                        <form action="{{ url_for('main.edition_desc_form') }}" method="post">
+                            <a class="btn btn-primary" href="/info_editions_description/{{ description.id }}" role="button">Edit</a>
+                            <input class="btn btn-primary" type="submit" name="{{ description.id }}" value="Del">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

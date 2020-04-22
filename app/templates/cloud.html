@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block current_app_content %}
+    <div class="container">
+        <img src="{{ url_for('static', filename='img/cloud-service.jpg') }}" class="img-responsive center-block">
+<div class="well">
+        <p>Oracle MySQL Cloud Service delivers a secure, cost-effective and enterprise-grade MySQL database service.
+            Built
+            on MySQL Enterprise Edition and powered by the Oracle Cloud, it provides a simple, automated, integrated and
+            enterprise ready MySQL cloud service, enabling organizations to increase business agility and reduce
+            costs.</p></div>
+        <div class="container  col-md-12">
+
+                <ul class="m01 col-md-6">
+                    　
+                    <li>星期一</li>
+                    　
+                    <li>星期二</li>
+                </ul>
+                <ul class="m02 col-md-6">
+                    　
+                    <li>星期3</li>
+                    　
+                    <li>星期4</li>
+                </ul>
+        </div>
+    </div>
+{% endblock %}

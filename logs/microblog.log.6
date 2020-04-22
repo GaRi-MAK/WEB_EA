@@ -1,0 +1,115 @@
+2020-04-19 15:52:32,518 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 15:52:38,798 ERROR: Exception on / [GET] [in /home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/k/PycharmProjects/webea/app/main/routes.py", line 21, in home
+    return render_template('home.html')
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/k/PycharmProjects/webea/app/templates/home.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/k/PycharmProjects/webea/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
+    {% block navbar %}
+  File "/home/k/PycharmProjects/webea/app/templates/base.html", line 22, in block "navbar"
+    <li><a href="{{ url_for('database.edit_editions') }}">edit</a></li>
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'database.edit_editions'. Did you mean 'main.edit_profile' instead?
+2020-04-19 15:52:40,417 ERROR: Exception on / [GET] [in /home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/k/PycharmProjects/webea/app/main/routes.py", line 21, in home
+    return render_template('home.html')
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/home/k/PycharmProjects/webea/app/templates/home.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/k/PycharmProjects/webea/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
+    {% block navbar %}
+  File "/home/k/PycharmProjects/webea/app/templates/base.html", line 22, in block "navbar"
+    <li><a href="{{ url_for('database.edit_editions') }}">edit</a></li>
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'database.edit_editions'. Did you mean 'main.edit_profile' instead?
+2020-04-19 15:52:59,952 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 15:59:46,709 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 16:00:19,647 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 16:01:42,389 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 16:13:12,901 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 16:16:15,132 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 16:17:22,400 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 16:18:10,360 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
