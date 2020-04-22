@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, \
-    TextAreaField
+    TextAreaField,SelectField
 from wtforms.validators import ValidationError, DataRequired, Length
 from flask_babel import _, lazy_gettext as _l
 from app.models import User
@@ -31,7 +31,7 @@ class PostForm(FlaskForm):
 class InfoEditionsForm(FlaskForm):
     title = StringField(_l('Editions Title'), validators=[DataRequired()])
     content = TextAreaField(_l('Content'), validators=[DataRequired(), Length(min=0, max=500)])
-    url = TextAreaField(_l('Content'), validators=[DataRequired(), Length(min=0, max=500)])
+    url = TextAreaField(_l('Link'), validators=[DataRequired(), Length(min=0, max=500)])
     submit = SubmitField(_l('Submit'))
 
 class InfoEditionsDESCForm(FlaskForm):
@@ -51,3 +51,19 @@ class MainProductForm(FlaskForm):
     url = TextAreaField(_l('Link of MainProduct'), validators=[DataRequired(), Length(min=0, max=500)])
     icon = TextAreaField(_l('icon of MainProduct'), validators=[DataRequired(), Length(min=0, max=500)])
     submit = SubmitField(_l('Submit'))
+
+class ServiceForm(FlaskForm):
+    type = StringField(_l('Type'), validators=[DataRequired()])
+    intro = TextAreaField(_l('Intro of Service'), validators=[DataRequired(), Length(min=0, max=500)])
+    url = TextAreaField(_l('Link of Service'), validators=[DataRequired(), Length(min=0, max=500)])
+    submit = SubmitField(_l('Submit'))
+class ServiceTypeForm(FlaskForm):
+    title = StringField(_l('Title'), validators=[DataRequired()])
+    Service_id=TextAreaField(_l('ID of ServiceType'), validators=[DataRequired(), Length(min=0, max=500)])
+    submit = SubmitField(_l('Submit'))
+class ServiceTypeDESCForm(FlaskForm):
+    type = StringField(_l('Type'), validators=[DataRequired()])
+    intro = TextAreaField(_l('Intro of Service'), validators=[DataRequired(), Length(min=0, max=500)])
+    url = TextAreaField(_l('Link of Service'), validators=[DataRequired(), Length(min=0, max=500)])
+    submit = SubmitField(_l('Submit'))
+

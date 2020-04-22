@@ -1,4 +1,4 @@
-2020-04-19 16:18:19,120 ERROR: Exception on /info_editions [GET] [in /home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2020-04-19 16:24:54,020 ERROR: Exception on /info_editions [GET] [in /home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
     context)
@@ -21,8 +21,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/k/PycharmProjects/webea/app/main/routes.py", line 140, in editions_form
-    Editions = InfoEditions.query.all()
+  File "/home/k/PycharmProjects/webea/app/main/routes.py", line 140, in edition_form
+    editions = InfoEditions.query.all()
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2783, in all
     return list(self)
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2935, in __iter__
@@ -48,9 +48,8 @@ Traceback (most recent call last):
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 508, in do_execute
     cursor.execute(statement, parameters)
 sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: info_editions [SQL: 'SELECT info_editions.id AS info_editions_id, info_editions.title AS info_editions_title, info_editions.content AS info_editions_content \nFROM info_editions'] (Background on this error at: http://sqlalche.me/e/e3q8)
-2020-04-19 16:18:35,877 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
-2020-04-19 16:19:07,522 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
-2020-04-19 16:19:11,243 ERROR: Exception on /info_editions [GET] [in /home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2020-04-19 16:26:55,030 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 16:26:58,034 ERROR: Exception on /info_editions [GET] [in /home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
     context)
@@ -73,8 +72,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/k/PycharmProjects/webea/app/main/routes.py", line 140, in editions_form
-    Editions = InfoEditions.query.all()
+  File "/home/k/PycharmProjects/webea/app/main/routes.py", line 140, in edition_form
+    editions = InfoEditions.query.all()
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2783, in all
     return list(self)
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2935, in __iter__
@@ -100,4 +99,4 @@ Traceback (most recent call last):
   File "/home/k/PycharmProjects/webea/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 508, in do_execute
     cursor.execute(statement, parameters)
 sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: info_editions [SQL: 'SELECT info_editions.id AS info_editions_id, info_editions.title AS info_editions_title, info_editions.content AS info_editions_content \nFROM info_editions'] (Background on this error at: http://sqlalche.me/e/e3q8)
-2020-04-19 16:22:44,203 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]
+2020-04-19 16:30:40,038 INFO: Microblog startup [in /home/k/PycharmProjects/webea/app/__init__.py:74]

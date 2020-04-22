@@ -39,7 +39,8 @@ def home():
 
 @bp.route('/product', methods=['GET', 'POST'])
 def product():
-    return render_template('product.html')
+    edition=InfoEditions.query.all()
+    return render_template('product.html',edition=edition)
 @bp.route('/cloud', methods=['GET', 'POST'])
 def cloud():
     return render_template('cloud.html')
