@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="84c8b4a3-9722-453e-8d83-1b88273fe12a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4773a967-a619-4942-ac30-f902f1ed58bd.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/microblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/microblog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/InfoEditionsForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/InfoEditionsForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/UserList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log.4" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log.5" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log.6" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.6" afterDir="false" />
-    </list>
+    <list default="true" id="84c8b4a3-9722-453e-8d83-1b88273fe12a" name="Default Changelist" comment="fix moodels" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,12 +90,24 @@
       <workItem from="1587529152955" duration="5283000" />
       <workItem from="1587535053715" duration="2136000" />
       <workItem from="1587540938202" duration="3854000" />
-      <workItem from="1587575988810" duration="2584000" />
+      <workItem from="1587575988810" duration="2886000" />
     </task>
+    <task id="LOCAL-00001" summary="fix moodels">
+      <created>1587578735637</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1587578735637</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix moodels" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix moodels" />
   </component>
   <component name="WindowStateProjectService">
     <state x="352" y="135" width="998" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587540899423">
@@ -129,34 +119,38 @@
       <screen x="70" y="27" width="1648" height="901" />
     </state>
     <state x="627" y="226" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/70.27.1648.901@70.27.1648.901" timestamp="1587471417414" />
+    <state x="433" y="27" width="984" height="901" key="CommitChangelistDialog2" timestamp="1587578876614">
+      <screen x="70" y="27" width="1648" height="901" />
+    </state>
+    <state x="433" y="27" width="984" height="901" key="CommitChangelistDialog2/70.27.1648.901@70.27.1648.901" timestamp="1587578876614" />
     <state x="677" y="235" width="424" height="491" key="FileChooserDialogImpl" timestamp="1587529318197">
       <screen x="70" y="27" width="1648" height="901" />
     </state>
     <state x="677" y="235" width="424" height="491" key="FileChooserDialogImpl/70.27.1648.901@70.27.1648.901" timestamp="1587529318197" />
-    <state width="1602" height="184" key="GridCell.Tab.0.bottom" timestamp="1587578022902">
+    <state width="1602" height="184" key="GridCell.Tab.0.bottom" timestamp="1587578739741">
       <screen x="70" y="27" width="1648" height="901" />
     </state>
     <state width="1804" height="224" key="GridCell.Tab.0.bottom/0.27.3840.1053@0.27.3840.1053" timestamp="1587285286332" />
     <state width="1598" height="224" key="GridCell.Tab.0.bottom/70.27.1644.897@70.27.1644.897" timestamp="1587296593169" />
-    <state width="1602" height="184" key="GridCell.Tab.0.bottom/70.27.1648.901@70.27.1648.901" timestamp="1587578022902" />
-    <state width="1602" height="184" key="GridCell.Tab.0.center" timestamp="1587578022901">
+    <state width="1602" height="184" key="GridCell.Tab.0.bottom/70.27.1648.901@70.27.1648.901" timestamp="1587578739741" />
+    <state width="1602" height="184" key="GridCell.Tab.0.center" timestamp="1587578739740">
       <screen x="70" y="27" width="1648" height="901" />
     </state>
     <state width="1804" height="224" key="GridCell.Tab.0.center/0.27.3840.1053@0.27.3840.1053" timestamp="1587285286331" />
     <state width="1598" height="224" key="GridCell.Tab.0.center/70.27.1644.897@70.27.1644.897" timestamp="1587296593167" />
-    <state width="1602" height="184" key="GridCell.Tab.0.center/70.27.1648.901@70.27.1648.901" timestamp="1587578022901" />
-    <state width="1602" height="184" key="GridCell.Tab.0.left" timestamp="1587578022900">
+    <state width="1602" height="184" key="GridCell.Tab.0.center/70.27.1648.901@70.27.1648.901" timestamp="1587578739740" />
+    <state width="1602" height="184" key="GridCell.Tab.0.left" timestamp="1587578739740">
       <screen x="70" y="27" width="1648" height="901" />
     </state>
     <state width="1804" height="224" key="GridCell.Tab.0.left/0.27.3840.1053@0.27.3840.1053" timestamp="1587285286330" />
     <state width="1598" height="224" key="GridCell.Tab.0.left/70.27.1644.897@70.27.1644.897" timestamp="1587296593167" />
-    <state width="1602" height="184" key="GridCell.Tab.0.left/70.27.1648.901@70.27.1648.901" timestamp="1587578022900" />
-    <state width="1602" height="184" key="GridCell.Tab.0.right" timestamp="1587578022901">
+    <state width="1602" height="184" key="GridCell.Tab.0.left/70.27.1648.901@70.27.1648.901" timestamp="1587578739740" />
+    <state width="1602" height="184" key="GridCell.Tab.0.right" timestamp="1587578739741">
       <screen x="70" y="27" width="1648" height="901" />
     </state>
     <state width="1804" height="224" key="GridCell.Tab.0.right/0.27.3840.1053@0.27.3840.1053" timestamp="1587285286331" />
     <state width="1598" height="224" key="GridCell.Tab.0.right/70.27.1644.897@70.27.1644.897" timestamp="1587296593168" />
-    <state width="1602" height="184" key="GridCell.Tab.0.right/70.27.1648.901@70.27.1648.901" timestamp="1587578022901" />
+    <state width="1602" height="184" key="GridCell.Tab.0.right/70.27.1648.901@70.27.1648.901" timestamp="1587578739741" />
     <state x="383" y="27" width="1125" height="901" key="SettingsEditor" timestamp="1587529263234">
       <screen x="70" y="27" width="1648" height="901" />
     </state>
@@ -170,6 +164,10 @@
     </state>
     <state x="645" y="293" width="484" height="372" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/70.27.1644.897@70.27.1644.897" timestamp="1587294412483" />
     <state x="646" y="294" width="484" height="383" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/70.27.1648.901@70.27.1648.901" timestamp="1587542394107" />
+    <state x="695" y="194" width="731" height="573" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1587578786560">
+      <screen x="70" y="27" width="1648" height="901" />
+    </state>
+    <state x="695" y="194" width="731" height="573" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/70.27.1648.901@70.27.1648.901" timestamp="1587578786560" />
     <state x="665" y="392" width="448" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587578574707">
       <screen x="70" y="27" width="1648" height="901" />
     </state>
