@@ -92,50 +92,43 @@ class Post(db.Model):
 
 
 class InfoEditions(db.Model):
-    __tabelname__ = "mysql_editions"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
     content = db.Column(db.String(500))
     url = db.Column(db.String(500))
-
-
+    description = db.relationship('InfoEditions_desc', backref='infoeditions')
 
 class InfoEditions_desc(db.Model):
-    __tabelname__ = "mysql_editions_description"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
     content = db.Column(db.String(500))
-    edition_id = db.Column(db.ForeignKey('mysql_editions.id'))
+    infoeditions_id = db.Column(db.Integer, db.ForeignKey('info_editions.id'))
 
 
 class CloudService(db.Model):
-    __tabelname__ = "cloud_service"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
     content = db.Column(db.String(500))
 
+
 class MainProduct(db.Model):
-    __tabelname__ = "main_product"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
     intro = db.Column(db.String(500))
     url = db.Column(db.String(500))
     icon = db.Column(db.String(500))
 
+
 class Service(db.Model):
-    __tabelname__ = "service"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     type = db.Column(db.String(100))
     intro = db.Column(db.String(500))
     url = db.Column(db.String(500))
+
+
 class ServiceType(db.Model):
-    __tabelname__ = "service_type"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
     Service_id = db.Column(db.Integer, db.ForeignKey("service.id"))
-class ServiceTypeDESC(db.Model):
-    __tabelname__ = "service_type_description"
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.String(100))
-    content = db.Column(db.String(10000))
-    service_type_id = db.Column(db.Integer, db.ForeignKey("service_type.id"))
+
+
