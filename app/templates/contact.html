@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block current_app_content %}
+    <h1>Contact MySQL Sales: Phone Numbers</h1>
+    <table class="table">
+        <tbody>
+        {% for a in contact %}
+            <tr>
+                <th scope="row">{{ a.region }}</th>
+                <td><img src="{{ url_for ('static', filename='img/'+a.flag) }}"/>{{ a.country }}</td>
+                <td>{{ a.phone }}</td>
+                <td>{{ a.email }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -8,26 +8,29 @@
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Title</th>
-            <th scope="col">Content</th>
+            <th scope="col">Type</th>
+            <th scope="col">Intro</th>
+            <th scope="col">Url</th>
         </tr>
         </thead>
         <tbody>
         {% if update %}
             <tr>
                 <td scope="row">{{ service.id }}</td>
-                <td>{{ service.title }}</td>
-                <td>{{ service.content }}</td>
+                <td>{{ service.type }}</td>
+                <td>{{ service.intro }}</td>
+                <td>{{ service.url }}</td>
             </tr>
         {% else %}
             {% for service in services %}
                 <tr>
                     <td scope="row">{{ service.id }}</td>
-                    <td>{{ service.title }}</td>
-                    <td>{{ service.content }}</td>
+                    <td>{{ service.type }}</td>
+                    <td>{{ service.intro }}</td>
+                    <td>{{ service.url }}</td>
                     <td>
-                        <form action="{{ url_for('main.cloudservice_form') }}" method="post">
-                            <a class="btn btn-primary" href="/info_cloudservice/{{ service.id }}" role="button">Edit</a>
+                        <form action="{{ url_for('main.services_form') }}" method="post">
+                            <a class="btn btn-primary" href="/info_editions/{{ service.id }}" role="button">Edit</a>
                             <input class="btn btn-primary" type="submit" name="{{ service.id }}" value="Del">
                         </form>
                     </td>

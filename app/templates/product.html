@@ -3,12 +3,14 @@
 {% block current_app_content %}
     <div class="container" style="margin-top:40px">
         <div class="col-md-3">
-            {% for a in edition %}
+
             <ul class="list-group">
-                <li class="list-group-item"><a href="{{a.url}}"><i
-                        class="glyphicon glyphicon-play"></i> {{ a.title }}</a></li>
+                {% for a in edition %}
+                    <li class="list-group-item"><a href="{{ a.url }}"><i
+                            class="glyphicon glyphicon-play"></i> {{ a.name }}</a></li>
+                {% endfor %}
             </ul>
-             {% endfor %}
+
         </div>
         <div class="col-md-9">
             <div class="right-content-bg">
@@ -16,13 +18,12 @@
                 <p>MySQL is the world's most popular open source database. Whether you are a fast growing web property,
                     technology ISV or large enterprise, MySQL can cost-effectively help you deliver high performance,
                     scalable database applications.</p>
-                <ul>
-                    <li><a href="/products/standard/">MySQL Standard Edition</a></li>
-                    <li><a href="/products/enterprise/">MySQL Enterprise Edition</a></li>
-                    <li><a href="/products/cluster/">MySQL Cluster Carrier Grade Edition</a></li>
+                <ul>{% for a in edition %}
+                    <li><a href="{{ a.url }}">{{ a.name }}</a></li>
+                    {% endfor %}
                 </ul>
                 <p>ISVs, OEMs and VARs can learn more about <a href="/oem/">MySQL as an Embedded Database</a></p>
-                 <img src="{{ url_for('static', filename='img/products.png') }}">
+                <img src="{{ url_for('static', filename='img/products.png') }}">
             </div>
         </div>
     </div>

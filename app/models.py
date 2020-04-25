@@ -93,22 +93,17 @@ class Post(db.Model):
 
 class InfoEditions(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.String(100))
-    content = db.Column(db.String(500))
+    name = db.Column(db.String(100))
+    intro = db.Column(db.String(500))
     url = db.Column(db.String(500))
-    description = db.relationship('InfoEditions_desc', backref='infoeditions')
+    description = db.relationship('InfoEditions_desc', backref='edition_of_desc', lazy='dynamic')
+
 
 class InfoEditions_desc(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
     content = db.Column(db.String(500))
     infoeditions_id = db.Column(db.Integer, db.ForeignKey('info_editions.id'))
-
-
-class CloudService(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.String(100))
-    content = db.Column(db.String(500))
 
 
 class MainProduct(db.Model):
@@ -119,16 +114,48 @@ class MainProduct(db.Model):
     icon = db.Column(db.String(500))
 
 
+class CloudService(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(100))
+    content = db.Column(db.String(500))
+    even = db.Column(db.String(1))
+
+
 class Service(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     type = db.Column(db.String(100))
     intro = db.Column(db.String(500))
     url = db.Column(db.String(500))
+    description = db.relationship('ServiceType', backref='service')
 
 
 class ServiceType(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
+    content = db.Column(db.String(500))
     Service_id = db.Column(db.Integer, db.ForeignKey("service.id"))
 
 
+class BusinessClient(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100))
+    intro = db.Column(db.String(500))
+    industry = db.Column(db.String(100))
+    country = db.Column(db.String(100))
+    url = db.Column(db.String(500))
+
+
+class Information(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(100))
+    subtitle = db.Column(db.String(500))
+    content = db.Column(db.String(500))
+
+
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    region = db.Column(db.String(100))
+    country = db.Column(db.String(100))
+    phone = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    flag = db.Column(db.String(100))

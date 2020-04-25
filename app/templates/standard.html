@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block current_app_content %}
+    <div class="container" style="margin-top:40px">
+        <div class="col-md-3">
+
+            <ul class="list-group">
+                {% for a in edition %}
+                    <li class="list-group-item"><a href="{{ a.url }}"><i
+                            class="glyphicon glyphicon-play"></i> {{ a.name }}</a></li>
+                {% endfor %}
+            </ul>
+
+        </div>
+        <div class="col-md-9">
+            <div class="right-content-bg">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h2 class="display-4">{{ standards.name }}</h2>
+                        <p class="lead">{{ standards.intro }}</p>
+                    </div>
+                </div>
+                {% for a in description %}
+                    <ul class="list-group">
+                        <li class="list-group-item active">{{ a.title }}</li>
+                        <li class="list-group-item">{{ a.content }}</li>
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -3,19 +3,22 @@
 {% block current_app_content %}
     <div class="container" style="margin-top:40px">
         <div class="col-md-3">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="#"><i
-                        class="glyphicon glyphicon-play"></i> Saved Searches</a></li>
-                <li class="list-group-item"><a href="#"><i
-                        class="glyphicon glyphicon-play"></i> Saved Cars</a></li>
-                <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-play"></i>
-                    Create new Ad</a></li>
 
+            <ul class="list-group">
+                {% for a in service %}
+                <li class="list-group-item"><a href="{{a.url}}"><i
+                        class="glyphicon glyphicon-play"></i> {{ a.type }}</a></li>
+                  {% endfor %}
             </ul>
+
         </div>
         <div class="col-md-9">
             <div class="right-content-bg">
                 <h1>MySQL Services</h1>
+                {% for a in service %}
+                <h3>{{ a.type }}</h3>
+                <p>{{ a.intro }}</p>
+                {% endfor %}
             </div>
         </div>
     </div>
