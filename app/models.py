@@ -96,7 +96,7 @@ class InfoEditions(db.Model):
     title = db.Column(db.String(100))
     content = db.Column(db.String(500))
     url = db.Column(db.String(500))
-    description = db.relationship('InfoEditions_desc', backref='infoeditions')
+
 
 class InfoEditions_desc(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -109,6 +109,8 @@ class CloudService(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
     content = db.Column(db.String(500))
+    even = db.Column(db.String(500))
+
 
 
 class MainProduct(db.Model):
@@ -121,14 +123,33 @@ class MainProduct(db.Model):
 
 class Service(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    type = db.Column(db.String(100))
+    name = db.Column(db.String(100))
     intro = db.Column(db.String(500))
     url = db.Column(db.String(500))
-
 
 class ServiceType(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
-    Service_id = db.Column(db.Integer, db.ForeignKey("service.id"))
+    content = db.Column(db.String(500))
+    service_id = db.Column(db.Integer, db.ForeignKey("service.id"))
 
 
+class PartnersContent(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    c_title = db.Column(db.String(100))
+    content = db.Column(db.String(1000))
+
+class WhySQL(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100))
+    url = db.Column(db.String(1000))
+class WhySQLContent(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(100))
+    content = db.Column(db.String(1000))
+    whysql_id = db.Column(db.Integer, db.ForeignKey("whySQL.id"))
+class HowToBuy(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.String(100))
+    content = db.Column(db.String(1000))
+    url = db.Column(db.String(1000))

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block current_app_content %}
+    {{ wtf.quick_form(form) }}
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">WhySQL ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if update %}
+            <tr>
+                <td scope="row">{{ sql_content.id }}</td>
+                <td>{{ sql_content.title }}</td>
+                <td>{{ sql_content.content }}</td>
+                <td>{{ sql_content.whysql_id }}</td>
+            </tr>
+        {% else %}
+            {% for sql_content in sql_contents %}
+                <tr>
+                    <td scope="row">{{ sql_content.id }}</td>
+                    <td>{{ sql_content.title }}</td>
+                    <td>{{ sql_content.content }}</td>
+                    <td>{{ sql_content.whysql_id }}</td>
+                    <td>
+                        <form action="{{ url_for('main.edit_whysql_content') }}" method="post">
+                            <a class="btn btn-primary" href="/info_whysql_content/{{ sql_content.id }}" role="button">Edit</a>
+                            <input class="btn btn-primary" type="submit" name="{{ sql_content.id }}" value="Del">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

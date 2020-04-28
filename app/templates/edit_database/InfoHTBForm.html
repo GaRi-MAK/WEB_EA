@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block current_app_content %}
+    {{ wtf.quick_form(form) }}
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Intro</th>
+            <th scope="col">Url</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if update %}
+            <tr>
+                <td scope="row">{{ htb.id }}</td>
+                <td>{{ htb.title }}</td>
+                <td>{{ htb.content }}</td>
+                <td>{{ htb.url }}</td>
+            </tr>
+        {% else %}
+            {% for htb in htbs %}
+                <tr>
+                    <td scope="row">{{ htb.id }}</td>
+                    <td>{{ htb.title }}</td>
+                    <td>{{ htb.content }}</td>
+                    <td>{{ htb.url }}</td>
+                    <td>
+                        <form action="{{ url_for('main.edit_howtobuy') }}" method="post">
+                            <a class="btn btn-primary" href="/info_howtobuy/{{ htb.id }}" role="button">Edit</a>
+                            <input class="btn btn-primary" type="submit" name="{{ htb.id }}" value="Del">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

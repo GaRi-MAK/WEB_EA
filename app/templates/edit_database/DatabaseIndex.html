@@ -30,15 +30,18 @@
             <div id="Service" class="container tab-pane fade"><br>
                 <ul class="list-group">
                     <li class="list-group-item active"><h3>Edit Service Info</h3></li>
-                    <li class="list-group-item"><a href="{{ url_for('main.edition_form') }}">Info Service</a></li>
-                    <li class="list-group-item"><a href="{{ url_for('main.edition_desc_form') }}">Info Editions Description</a></li>
-                    <li class="list-group-item"><a href="{{ url_for('main.cloudservice_form') }}">Info Cloud Service</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('main.edit_service') }}">Info Service</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('main.edit_service_type') }}">Info Service Type</a></li>
                 </ul>
             </div>
             <div id="Information" class="container tab-pane fade"><br>
-                <h3>Information</h3>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam.</p>
+                 <ul class="list-group">
+                    <li class="list-group-item active"><h3>Edit Information Info</h3></li>
+                    <li class="list-group-item"><a href="{{ url_for('main.partners_content') }}">Edit Partner</a></li>
+                     <li class="list-group-item"><a href="{{ url_for('main.edit_whysql') }}">Edit WhySQL</a></li>
+                      <li class="list-group-item"><a href="{{ url_for('main.edit_whysql_content') }}">Edit WhySQLContent</a></li>
+                      <li class="list-group-item"><a href="{{ url_for('main.edit_howtobuy') }}">Edit How To Buy</a></li>
+                </ul>
             </div>
         </div>
     </div>

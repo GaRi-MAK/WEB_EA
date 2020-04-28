@@ -10,19 +10,16 @@
             enterprise ready MySQL cloud service, enabling organizations to increase business agility and reduce
             costs.</p></div>
         <div class="container  col-md-12">
-
-                <ul class="m01 col-md-6">
-                    　
-                    <li>星期一</li>
-                    　
-                    <li>星期二</li>
-                </ul>
-                <ul class="m02 col-md-6">
-                    　
-                    <li>星期3</li>
-                    　
-                    <li>星期4</li>
-                </ul>
+            <ul class="m01 col-md-6">
+                {% for a in delivers1 %}
+                    <li>{{ a.title }}-{{ a.content }}</li>
+                {% endfor %}
+            </ul>
+            <ul class="m02 col-md-6">
+                {% for a in delivers2 %}
+                    <li>{{ a.title }}-{{ a.content }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 {% endblock %}
