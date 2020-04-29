@@ -31,23 +31,56 @@ class PostForm(FlaskForm):
 class InfoEditionsForm(FlaskForm):
     title = StringField(_l('Editions Title'), validators=[DataRequired()])
     content = TextAreaField(_l('Content'), validators=[DataRequired(), Length(min=0, max=500)])
-    url = TextAreaField(_l('Content'), validators=[DataRequired(), Length(min=0, max=500)])
+    url = TextAreaField(_l('Url'), validators=[DataRequired(), Length(min=0, max=500)])
     submit = SubmitField(_l('Submit'))
 
 class InfoEditionsDESCForm(FlaskForm):
     title = StringField(_l('Description Title'), validators=[DataRequired()])
     content = TextAreaField(_l('Content'), validators=[DataRequired(), Length(min=0, max=500)])
-    edition_id = TextAreaField(_l('Edition ID'), validators=[DataRequired(), Length(min=0, max=500)])
+    infoeditions_id = TextAreaField(_l('Edition ID'), validators=[DataRequired(), Length(min=0, max=500)])
     submit = SubmitField(_l('Submit'))
 
 class CloudServiceForm(FlaskForm):
     title = StringField(_l(' Cloud Service Delivers Title'), validators=[DataRequired()])
-    content = TextAreaField(_l('Cloud Service Delivers Content'), validators=[DataRequired(), Length(min=0, max=500)])
+    content = TextAreaField(_l('Cloud Service Delivers Content'), validators=[DataRequired()])
+    even = TextAreaField(_l('Even or Odd'), validators=[DataRequired()])
     submit = SubmitField(_l('Submit'))
+
 
 class MainProductForm(FlaskForm):
     title = StringField(_l('Main Product Title'), validators=[DataRequired()])
     intro = TextAreaField(_l('Intro of MainProduct'), validators=[DataRequired(), Length(min=0, max=500)])
     url = TextAreaField(_l('Link of MainProduct'), validators=[DataRequired(), Length(min=0, max=500)])
     icon = TextAreaField(_l('icon of MainProduct'), validators=[DataRequired(), Length(min=0, max=500)])
+    submit = SubmitField(_l('Submit'))
+class ServiceForm(FlaskForm):
+    name = StringField(_l('Service Name'), validators=[DataRequired()])
+    intro = TextAreaField(_l('Intro of Service'), validators=[DataRequired(), Length(min=0, max=500)])
+    url = TextAreaField(_l('Link of Service'), validators=[DataRequired(), Length(min=0, max=500)])
+    submit = SubmitField(_l('Submit'))
+class ServiceTypeForm(FlaskForm):
+    title = StringField(_l('Service Title'), validators=[DataRequired()])
+    content = TextAreaField(_l('Content of ServiceType'))
+    service_id = TextAreaField(_l('Id of Service'))
+    submit = SubmitField(_l('Submit'))
+
+
+class PartnersContentForm(FlaskForm):
+    c_title = StringField(_l('Content Title'), validators=[DataRequired()])
+    content = TextAreaField(_l('Content of Partners'))
+    submit = SubmitField(_l('Submit'))
+
+class WhySQLForm(FlaskForm):
+    name = StringField(_l('Item Name'), validators=[DataRequired()])
+    url = TextAreaField(_l('Link of Item'))
+    submit = SubmitField(_l('Submit'))
+class WhySQLContentForm(FlaskForm):
+    title = StringField(_l('Title'), validators=[DataRequired()])
+    content = TextAreaField(_l('Content'))
+    whysql_id= TextAreaField(_l('Id of WhySQL'))
+    submit = SubmitField(_l('Submit'))
+class HowToBuyForm(FlaskForm):
+    title = StringField(_l('Title'), validators=[DataRequired()])
+    content = TextAreaField(_l('Content'))
+    url = TextAreaField(_l('Link of Item'))
     submit = SubmitField(_l('Submit'))

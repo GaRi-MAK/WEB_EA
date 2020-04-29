@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block current_app_content %}
+    {{ wtf.quick_form(form) }}
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if update %}
+            <tr>
+                <td scope="row">{{ content.id }}</td>
+                <td>{{ content.c_title }}</td>
+                <td>{{ content.content }}</td>
+            </tr>
+        {% else %}
+            {% for content in contents %}
+                <tr>
+                    <td scope="row">{{ content.id }}</td>
+                    <td>{{ content.c_title }}</td>
+                    <td>{{ content.content }}</td>
+                    <td>
+                        <form action="{{ url_for('main.partners_content') }}" method="post">
+                            <a class="btn btn-primary" href="/partners_content/{{ content.id }}" role="button">Edit</a>
+                            <input class="btn btn-primary" type="submit" name="{{ content.id }}" value="Del">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

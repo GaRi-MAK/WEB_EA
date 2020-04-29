@@ -4,8 +4,10 @@ from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from app import current_app, db
 from app.main.forms import EditProfileForm, PostForm, InfoEditionsForm, InfoEditionsDESCForm, CloudServiceForm, \
-    MainProductForm
-from app.models import User, Post, InfoEditions, InfoEditions_desc, CloudService, MainProduct
+    MainProductForm, ServiceForm, ServiceTypeForm, PartnersContentForm, WhySQLForm, WhySQLContentForm, \
+    HowToBuyForm
+from app.models import User, Post, InfoEditions, InfoEditions_desc, CloudService, MainProduct, \
+    Service, ServiceType, PartnersContent, WhySQL, WhySQLContent, HowToBuy
 from app.main import bp
 from functools import wraps
 
@@ -35,17 +37,110 @@ def is_admin(func):
 @bp.route('/', methods=['GET', 'POST'])
 def home():
     ads = MainProduct.query.all()
-    return render_template('home.html',ads=ads)
+    return render_template('home.html', ads=ads)
+
+
+@bp.route('/partners', methods=['GET', 'POST'])
+def partners():
+    partner = PartnersContent.query.all()
+    return render_template('partner.html', title=_('Partner'), partner=partner)
+
+
+@bp.route('/buy-mysql', methods=['GET', 'POST'])
+def howtobuy():
+    htb = HowToBuy.query.all()
+    return render_template('howtobuy.html', htb=htb)
+
 
 @bp.route('/product', methods=['GET', 'POST'])
 def product():
-    return render_template('product.html')
+    edition = InfoEditions.query.all()
+    return render_template('product.html', edition=edition)
+
+
+@bp.route('/products/standard', methods=['GET', 'POST'])
+def standard():
+    link = InfoEditions.query.all()
+    intro = InfoEditions.query.filter_by(id=1)
+    edition = InfoEditions_desc.query.filter_by(infoeditions_id=1).all()
+    return render_template('standard_products.html', edition=edition, link=link, intro=intro)
+
+
+@bp.route('/products/enterprise', methods=['GET', 'POST'])
+def enterprise():
+    link = InfoEditions.query.all()
+    intro = InfoEditions.query.filter_by(id=2)
+    edition = InfoEditions_desc.query.filter_by(infoeditions_id=2).all()
+    return render_template('standard_products.html', edition=edition, link=link, intro=intro)
+
+
+@bp.route('/products/cluster', methods=['GET', 'POST'])
+def cluster():
+    link = InfoEditions.query.all()
+    intro = InfoEditions.query.filter_by(id=3)
+    edition = InfoEditions_desc.query.filter_by(infoeditions_id=3).all()
+    return render_template('standard_products.html', edition=edition, link=link, intro=intro)
+
+
 @bp.route('/cloud', methods=['GET', 'POST'])
 def cloud():
-    return render_template('cloud.html')
+    delivers1 = CloudService.query.filter_by(even=1)
+    delivers2 = CloudService.query.filter_by(even=2)
+    return render_template('cloud.html', delivers1=delivers1, delivers2=delivers2)
+
+
 @bp.route('/services', methods=['GET', 'POST'])
 def services():
-    return render_template('services.html')
+    service = Service.query.all()
+    return render_template('services.html', service=service)
+
+
+@bp.route('/training', methods=['GET', 'POST'])
+def training():
+    link = Service.query.all()
+    st = ServiceType.query.filter_by(service_id=1)
+    return render_template('training.html', link=link, st=st)
+
+
+@bp.route('/certification', methods=['GET', 'POST'])
+def certification():
+    link = Service.query.all()
+    st = ServiceType.query.filter_by(service_id=2)
+    return render_template('certification.html', link=link, st=st)
+
+
+@bp.route('/support', methods=['GET', 'POST'])
+def support():
+    link = Service.query.all()
+    st = ServiceType.query.filter_by(service_id=3).all()
+    return render_template('support.html', link=link, st=st)
+
+
+@bp.route('/why-mysql', methods=['GET', 'POST'])
+def why_mysql():
+    wm = WhySQL.query.all()
+    return render_template('why-mysql.html', wm=wm)
+
+
+@bp.route('/why-mysql/white-papers', methods=['GET', 'POST'])
+def why_mysql_content():
+    wm = WhySQL.query.all()
+    t = WhySQL.query.filter_by(id=1)
+    ct = WhySQLContent.query.filter_by(whysql_id=1).all()
+    return render_template('standard_mysql_content.html', wm=wm, ct=ct,t=t)
+@bp.route('/why-mysql/presentations', methods=['GET', 'POST'])
+def presentations():
+    wm = WhySQL.query.all()
+    t = WhySQL.query.filter_by(id=2)
+    ct = WhySQLContent.query.filter_by(whysql_id=2).all()
+    return render_template('standard_mysql_content.html', wm=wm, ct=ct,t=t)
+
+
+@bp.route('/why-mysql/tb', methods=['GET', 'POST'])
+def tb():
+    wm = WhySQL.query.all()
+    return render_template('why-mysql-tb.html', wm=wm)
+
 
 @bp.route('/forum', methods=['GET', 'POST'])
 @login_required
@@ -148,14 +243,12 @@ def unfollow(username):
     return redirect(url_for('main.user', username=username))
 
 
-
-
-
-# admin功能
+# admin_func
 @bp.route('/database_index', methods=['GET', 'POST'])
 @is_admin
 def database_index():
-    return render_template('DatabaseIndex.html')
+    return render_template('edit_database/DatabaseIndex.html')
+
 
 @bp.route('/info_editions', methods=['GET', 'POST'])
 @is_admin
@@ -163,7 +256,7 @@ def edition_form():
     form = InfoEditionsForm()
     editions = InfoEditions.query.all()
     if form.validate_on_submit():
-        edition = InfoEditions(title=form.title.data, content=form.content.data)
+        edition = InfoEditions(title=form.title.data, content=form.content.data, url=form.url.data)
         db.session.add(edition)
         db.session.commit()
         flash(_('Added'))
@@ -177,7 +270,7 @@ def edition_form():
         db.session.commit()
         flash(_('Deleted'))
         return redirect(url_for('main.edition_form'))
-    return render_template('InfoEditionsForm.html', form=form, editions=editions)
+    return render_template('edit_database/InfoEditionsForm.html', form=form, editions=editions)
 
 
 @bp.route('/info_editions/<data_id>', methods=['GET', 'POST'])
@@ -188,10 +281,11 @@ def edition_form_id(data_id):
     if form.validate_on_submit():
         edition.title = form.title.data
         edition.content = form.content.data
+        edition.url = form.url.data
         db.session.commit()
         flash(_('Updated'))
         return redirect(url_for('main.edition_form'))
-    return render_template('InfoEditionsForm.html', form=form, edition=edition, update=True)
+    return render_template('edit_database/InfoEditionsForm.html', form=form, edition=edition, update=True)
 
 
 @bp.route('/info_editions_description', methods=['GET', 'POST'])
@@ -201,7 +295,7 @@ def edition_desc_form():
     descriptions = InfoEditions_desc.query.all()
     if form.validate_on_submit():
         description = InfoEditions_desc(title=form.title.data, content=form.content.data,
-                                        edition_id=form.edition_id.data)
+                                        infoeditions_id=form.infoeditions_id.data)
         db.session.add(description)
         db.session.commit()
         flash(_('Added'))
@@ -215,7 +309,7 @@ def edition_desc_form():
         db.session.commit()
         flash(_('Deleted'))
         return redirect(url_for('main.edition_desc_form'))
-    return render_template('InfoEditionsDescription.html', form=form, descriptions=descriptions)
+    return render_template('edit_database/InfoEditionsDescription.html', form=form, descriptions=descriptions)
 
 
 @bp.route('/info_editions_description/<data_id>', methods=['GET', 'POST'])
@@ -226,11 +320,12 @@ def edition_desc_form_id(data_id):
     if form.validate_on_submit():
         description.title = form.title.data
         description.content = form.content.data
-        description.edition_id = form.edition_id.data
+        description.infoeditions_id = form.infoeditions_id.data
         db.session.commit()
         flash(_('Updated'))
         return redirect(url_for('main.edition_desc_form'))
-    return render_template('InfoEditionsDescription.html', form=form, description=description, update=True)
+    return render_template('edit_database/InfoEditionsDescription.html', form=form, description=description,
+                           update=True)
 
 
 @bp.route('/info_cloudservice', methods=['GET', 'POST'])
@@ -239,7 +334,7 @@ def cloudservice_form():
     form = CloudServiceForm()
     services = CloudService.query.all()
     if form.validate_on_submit():
-        service = CloudService(title=form.title.data, content=form.content.data)
+        service = CloudService(title=form.title.data, content=form.content.data, even=form.even.data)
         db.session.add(service)
         db.session.commit()
         flash(_('Added'))
@@ -253,7 +348,7 @@ def cloudservice_form():
         db.session.commit()
         flash(_('Deleted'))
         return redirect(url_for('main.cloudservice_form'))
-    return render_template('InfoCloudService.html', form=form, services=services)
+    return render_template('edit_database/InfoCloudService.html', form=form, services=services)
 
 
 @bp.route('/info_cloudservice/<data_id>', methods=['GET', 'POST'])
@@ -264,10 +359,11 @@ def cloudservice_form_id(data_id):
     if form.validate_on_submit():
         service.title = form.title.data
         service.content = form.content.data
+        service.even = form.even.data
         db.session.commit()
         flash(_('Updated'))
         return redirect(url_for('main.cloudservice_form'))
-    return render_template('InfoCloudService.html', form=form, service=service, update=True)
+    return render_template('edit_database/InfoCloudService.html', form=form, service=service, update=True)
 
 
 @bp.route('/main_product', methods=['GET', 'POST'])
@@ -277,7 +373,7 @@ def info_main_productForm():
     mainproducts = MainProduct.query.all()
     if form.validate_on_submit():
         mainproduct = MainProduct(title=form.title.data, intro=form.intro.data,
-                                        url=form.url.data,icon=form.icon.data)
+                                  url=form.url.data, icon=form.icon.data)
         db.session.add(mainproduct)
         db.session.commit()
         flash(_('Added'))
@@ -291,7 +387,9 @@ def info_main_productForm():
         db.session.commit()
         flash(_('Deleted'))
         return redirect(url_for('main.info_main_productForm'))
-    return render_template('InfoMainProductForm.html', form=form, mainproducts=mainproducts)
+    return render_template('edit_database/InfoMainProductForm.html', form=form, mainproducts=mainproducts)
+
+
 @bp.route('/main_product/<data_id>', methods=['GET', 'POST'])
 @is_admin
 def info_main_productForm_id(data_id):
@@ -305,4 +403,230 @@ def info_main_productForm_id(data_id):
         db.session.commit()
         flash(_('Updated'))
         return redirect(url_for('main.info_main_productForm'))
-    return render_template('InfoMainProductForm.html', form=form, mainproduct=mainproduct, update=True)
+    return render_template('edit_database/InfoMainProductForm.html', form=form, mainproduct=mainproduct, update=True)
+
+
+@bp.route('/partners_content', methods=['GET', 'POST'])
+@is_admin
+def partners_content():
+    form = PartnersContentForm()
+    contents = PartnersContent.query.all()
+    if form.validate_on_submit():
+        content = PartnersContent(c_title=form.c_title.data, content=form.content.data)
+        db.session.add(content)
+        db.session.commit()
+        flash(_('Added'))
+        return redirect(url_for('main.partners_content'))
+    if request.method == 'POST':
+        del_form = request.form
+        for ID in del_form.to_dict():
+            record_id = ID
+        del_content = PartnersContent.query.filter_by(id=record_id).first()
+        db.session.delete(del_content)
+        db.session.commit()
+        flash(_('Deleted'))
+        return redirect(url_for('main.partners_content'))
+    return render_template('edit_database/InfoPartnersContentForm.html', form=form, contents=contents)
+
+
+@bp.route('/partners_content/<data_id>', methods=['GET', 'POST'])
+@is_admin
+def partners_content_id(data_id):
+    form = PartnersContentForm()
+    content = PartnersContent.query.filter_by(id=data_id).first()
+    if form.validate_on_submit():
+        content.c_title = form.c_title.data
+        content.content = form.content.data
+        db.session.commit()
+        flash(_('Updated'))
+        return redirect(url_for('main.partners_content'))
+    return render_template('edit_database/InfoPartnersContentForm.html', form=form, content=content, update=True)
+
+
+@bp.route('/info_service', methods=['GET', 'POST'])
+@is_admin
+def edit_service():
+    form = ServiceForm()
+    servicess = Service.query.all()
+    if form.validate_on_submit():
+        service = Service(name=form.name.data, intro=form.intro.data, url=form.url.data)
+        db.session.add(service)
+        db.session.commit()
+        flash(_('Added'))
+        return redirect(url_for('main.edit_service'))
+    if request.method == 'POST':
+        del_form = request.form
+        for ID in del_form.to_dict():
+            record_id = ID
+        del_service = Service.query.filter_by(id=record_id).first()
+        db.session.delete(del_service)
+        db.session.commit()
+        flash(_('Deleted'))
+        return redirect(url_for('main.edit_service'))
+    return render_template('edit_database/InfoServiceForm.html', form=form, servicess=servicess)
+
+
+@bp.route('/info_service/<data_id>', methods=['GET', 'POST'])
+@is_admin
+def edit_service_id(data_id):
+    form = ServiceForm()
+    services = Service.query.filter_by(id=data_id).first()
+    if form.validate_on_submit():
+        services.name = form.name.data
+        services.intro = form.intro.data
+        services.url = form.url.data
+        db.session.commit()
+        flash(_('Updated'))
+        return redirect(url_for('main.edit_service'))
+    return render_template('edit_database/InfoServiceForm.html', form=form, services=services, update=True)
+
+
+@bp.route('/info_service_type', methods=['GET', 'POST'])
+@is_admin
+def edit_service_type():
+    form = ServiceTypeForm()
+    servicet = ServiceType.query.all()
+    if form.validate_on_submit():
+        st = ServiceType(title=form.title.data, content=form.content.data, service_id=form.service_id.data)
+        db.session.add(st)
+        db.session.commit()
+        flash(_('Added'))
+        return redirect(url_for('main.edit_service_type'))
+    if request.method == 'POST':
+        del_form = request.form
+        for ID in del_form.to_dict():
+            record_id = ID
+        del_service = ServiceType.query.filter_by(id=record_id).first()
+        db.session.delete(del_service)
+        db.session.commit()
+        flash(_('Deleted'))
+        return redirect(url_for('main.edit_service_type'))
+    return render_template('edit_database/InfoServiceTypeForm.html', form=form, servicet=servicet)
+
+
+@bp.route('/info_service_type/<data_id>', methods=['GET', 'POST'])
+@is_admin
+def edit_service_type_id(data_id):
+    form = ServiceTypeForm()
+    st = ServiceType.query.filter_by(id=data_id).first()
+    if form.validate_on_submit():
+        st.title = form.title.data
+        st.content = form.content.data
+        st.service_id = form.service_id.data
+        db.session.commit()
+        flash(_('Updated'))
+        return redirect(url_for('main.edit_service_type'))
+    return render_template('edit_database/InfoServiceTypeForm.html', form=form, st=st, update=True)
+
+
+@bp.route('/info_whysql', methods=['GET', 'POST'])
+@is_admin
+def edit_whysql():
+    form = WhySQLForm()
+    sqls = WhySQL.query.all()
+    if form.validate_on_submit():
+        sql = WhySQL(name=form.name.data, url=form.url.data)
+        db.session.add(sql)
+        db.session.commit()
+        flash(_('Added'))
+        return redirect(url_for('main.edit_whysql'))
+    if request.method == 'POST':
+        del_form = request.form
+        for ID in del_form.to_dict():
+            record_id = ID
+        del_sql = WhySQL.query.filter_by(id=record_id).first()
+        db.session.delete(del_sql)
+        db.session.commit()
+        flash(_('Deleted'))
+        return redirect(url_for('main.edit_whysql'))
+    return render_template('edit_database/InfoWhySQLForm.html', form=form, sqls=sqls)
+
+
+@bp.route('/info_whysql/<data_id>', methods=['GET', 'POST'])
+@is_admin
+def edit_whysql_id(data_id):
+    form = WhySQLForm()
+    sql = WhySQL.query.filter_by(id=data_id).first()
+    if form.validate_on_submit():
+        sql.name = form.name.data
+        sql.url = form.url.data
+        db.session.commit()
+        flash(_('Updated'))
+        return redirect(url_for('main.edit_whysql'))
+    return render_template('edit_database/InfoWhySQLForm.html', form=form, sql=sql, update=True)
+
+
+@bp.route('/info_whysql_content', methods=['GET', 'POST'])
+@is_admin
+def edit_whysql_content():
+    form = WhySQLContentForm()
+    sql_contents = WhySQLContent.query.all()
+    if form.validate_on_submit():
+        sql_content = WhySQLContent(title=form.title.data, content=form.content.data, whysql_id=form.whysql_id.data)
+        db.session.add(sql_content)
+        db.session.commit()
+        flash(_('Added'))
+        return redirect(url_for('main.edit_whysql_content'))
+    if request.method == 'POST':
+        del_form = request.form
+        for ID in del_form.to_dict():
+            record_id = ID
+        del_sql_content = WhySQLContent.query.filter_by(id=record_id).first()
+        db.session.delete(del_sql_content)
+        db.session.commit()
+        flash(_('Deleted'))
+        return redirect(url_for('main.edit_whysql_content'))
+    return render_template('edit_database/InfoWhySQLContentForm.html', form=form, sql_contents=sql_contents)
+
+
+@bp.route('/info_whysql_content/<data_id>', methods=['GET', 'POST'])
+@is_admin
+def edit_whysql_content_id(data_id):
+    form = WhySQLContentForm()
+    sql_content = WhySQLContent.query.filter_by(id=data_id).first()
+    if form.validate_on_submit():
+        sql_content.title = form.title.data
+        sql_content.content = form.content.data
+        sql_content.whysql_id = form.whysql_id.data
+        db.session.commit()
+        flash(_('Updated'))
+        return redirect(url_for('main.edit_whysql_content'))
+    return render_template('edit_database/InfoWhySQLContentForm.html', form=form, sql_content=sql_content, update=True)
+
+
+@bp.route('/info_howtobuy', methods=['GET', 'POST'])
+@is_admin
+def edit_howtobuy():
+    form = HowToBuyForm()
+    htbs = HowToBuy.query.all()
+    if form.validate_on_submit():
+        htb = HowToBuy(title=form.title.data, content=form.content.data, url=form.url.data)
+        db.session.add(htb)
+        db.session.commit()
+        flash(_('Added'))
+        return redirect(url_for('main.edit_howtobuy'))
+    if request.method == 'POST':
+        del_form = request.form
+        for ID in del_form.to_dict():
+            record_id = ID
+        del_htb = HowToBuy.query.filter_by(id=record_id).first()
+        db.session.delete(del_htb)
+        db.session.commit()
+        flash(_('Deleted'))
+        return redirect(url_for('main.edit_howtobuy'))
+    return render_template('edit_database/InfoHTBForm.html', form=form, htbs=htbs)
+
+
+@bp.route('/info_howtobuy/<data_id>', methods=['GET', 'POST'])
+@is_admin
+def edit_howtobuy_id(data_id):
+    form = HowToBuyForm()
+    htb = HowToBuy.query.filter_by(id=data_id).first()
+    if form.validate_on_submit():
+        htb.title = form.title.data
+        htb.content = form.content.data
+        htb.url = form.url.data
+        db.session.commit()
+        flash(_('Updated'))
+        return redirect(url_for('main.edit_howtobuy'))
+    return render_template('edit_database/InfoHTBForm.html', form=form, htb=htb, update=True)

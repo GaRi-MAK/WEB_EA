@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block current_app_content %}
+    <div class="container" style="margin-top:40px">
+        <div class="col-md-3">
+            <ul class="list-group">
+                {% for a in wm %}
+                    <li class="list-group-item"><a href="{{ a.url }}"><i
+                            class="glyphicon glyphicon-play"></i> {{ a.name }}</a></li>
+                {% endfor %}
+                <li class="list-group-item"><a href="/why-mysql/tb"><i
+                        class="glyphicon glyphicon-play"></i>Benchmarks & TCO</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="right-content-bg">
+            <div class="jumbotron">
+                {% for a in t %}
+                    <h1>{{ a.name }}</h1>
+                {% endfor %}</div>
+                <ul class="list-group">
+                    {% for a in ct %}
+                        <li class="list-group-item active">{{ a.title }}</li>
+                        <li class="list-group-item"><img src="{{ url_for('static', filename='img/'+a.content) }}"class=img-responsive></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

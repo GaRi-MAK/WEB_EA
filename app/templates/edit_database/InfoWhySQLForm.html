@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block current_app_content %}
+    {{ wtf.quick_form(form) }}
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Url</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if update %}
+            <tr>
+                <td scope="row">{{ sql.id }}</td>
+                <td>{{ sql.name }}</td>
+                <td>{{ sql.url }}</td>
+            </tr>
+        {% else %}
+            {% for sql in sqls %}
+                <tr>
+                    <td scope="row">{{ sql.id }}</td>
+                    <td>{{ sql.name }}</td>
+                    <td>{{ sql.url }}</td>
+                    <td>
+                        <form action="{{ url_for('main.edit_whysql') }}" method="post">
+                            <a class="btn btn-primary" href="/info_whysql/{{ sql.id }}" role="button">Edit</a>
+                            <input class="btn btn-primary" type="submit" name="{{ sql.id }}" value="Del">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

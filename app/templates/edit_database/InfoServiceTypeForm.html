@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block current_app_content %}
+    {{ wtf.quick_form(form) }}
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Service ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if update %}
+            <tr>
+                <td scope="row">{{ st.id }}</td>
+                <td>{{ st.title }}</td>
+                <td>{{ st.content }}</td>
+                <td>{{ st.service_id }}</td>
+            </tr>
+        {% else %}
+            {% for st in servicet %}
+                <tr>
+                    <td scope="row">{{ st.id }}</td>
+                    <td>{{ st.title }}</td>
+                    <td>{{ st.content }}</td>
+                    <td>{{ st.service_id }}</td>
+                    <td>
+                        <form action="{{ url_for('main.edit_service_type') }}" method="post">
+                            <a class="btn btn-primary" href="/info_service_type/{{ st.id }}" role="button">Edit</a>
+                            <input class="btn btn-primary" type="submit" name="{{ st.id }}" value="Del">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
