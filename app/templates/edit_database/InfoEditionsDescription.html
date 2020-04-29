@@ -19,7 +19,7 @@
                 <td scope="row">{{ description.id }}</td>
                 <td>{{ description.title }}</td>
                 <td>{{ description.content }}</td>
-                <td>{{ description.edition_id}}</td>
+                <td>{{ description.infoeditions_id}}</td>
             </tr>
         {% else %}
             {% for description in descriptions %}
@@ -27,7 +27,7 @@
                     <td scope="row">{{ description.id }}</td>
                     <td>{{ description.title }}</td>
                     <td>{{ description.content }}</td>
-                    <td>{{ description.edition_id}}</td>
+                    <td>{{ description.infoeditions_id}}</td>
                     <td>
                         <form action="{{ url_for('main.edition_desc_form') }}" method="post">
                             <a class="btn btn-primary" href="/info_editions_description/{{ description.id }}" role="button">Edit</a>

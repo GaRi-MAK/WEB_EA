@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block current_app_content %}
+    <div class="container" style="margin-top:40px">
+        <div class="col-md-3">
+            <ul class="list-group">
+                {% for a in link %}
+                    <li class="list-group-item"><a href="{{ a.url }}"><i
+                            class="glyphicon glyphicon-play"></i> {{ a.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="right-content-bg">
+                <div class="jumbotron">
+                    <div class="container">
+                        <h1 class="display-4">MySQL Technical Support</h1>
+                        <p>MySQL Technical Support Services provide direct access to our expert MySQL Support engineers
+                            who are ready to assist you in the development, deployment, and management of MySQL
+                            applications.</p>
+                    </div>
+                </div>
+                <p>The MySQL Support team is composed of seasoned MySQL developers. They are database experts and
+                    understand the issues and challenges you face because they've overcome these same challenges
+                    themselves.
+
+                    Even though you might have highly skilled technical staff that can solve your issues, MySQL Support
+                    Engineers can typically solve those same issues a lot faster. A vast majority of the problems the
+                    MySQL Support Engineers encounter, they have seen before. So an issue that could take several weeks
+                    for your staff to research and resolve, may be solved in a matter of hours by the MySQL Support
+                    team.</p>
+                <img src="{{ url_for('static', filename='img/ts.jpg') }}" class="img-responsive center-block">
+                <ul class="list-group">
+                    {% for a in st %}
+                        <li class="list-group-item active">{{ a.title }}</li>
+                        <li class="list-group-item">{{ a.content }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

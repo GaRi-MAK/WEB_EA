@@ -10,24 +10,27 @@
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Content</th>
+            <th scope="col">Url</th>
         </tr>
         </thead>
         <tbody>
         {% if update %}
             <tr>
                 <td scope="row">{{ service.id }}</td>
-                <td>{{ service.title }}</td>
-                <td>{{ service.content }}</td>
+                <td>{{ service.name }}</td>
+                <td>{{ service.intro }}</td>
+                <td>{{ service.url }}</td>
             </tr>
         {% else %}
-            {% for service in services %}
+            {% for service in servicess %}
                 <tr>
                     <td scope="row">{{ service.id }}</td>
-                    <td>{{ service.title }}</td>
-                    <td>{{ service.content }}</td>
+                    <td>{{ service.name }}</td>
+                    <td>{{ service.intro }}</td>
+                    <td>{{ service.url }}</td>
                     <td>
-                        <form action="{{ url_for('main.cloudservice_form') }}" method="post">
-                            <a class="btn btn-primary" href="/info_cloudservice/{{ service.id }}" role="button">Edit</a>
+                        <form action="{{ url_for('main.edit_service') }}" method="post">
+                            <a class="btn btn-primary" href="/info_service/{{ service.id }}" role="button">Edit</a>
                             <input class="btn btn-primary" type="submit" name="{{ service.id }}" value="Del">
                         </form>
                     </td>
