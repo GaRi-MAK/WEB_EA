@@ -56,23 +56,16 @@ def events():
 def howtobuy():
     contact = Contact.query.all()
     htb = HowToBuy.query.all()
-    return render_template('howtobuy.html', htb=htb, contact=contact)
-
-
-@bp.route('/buy-mysql', methods=['GET', 'POST'])
-def es():
-    return render_template('events.html')
-
+    return render_template('howtobuy.html', title=_('How To Buy'),htb=htb, contact=contact)
 
 @bp.route('/product', methods=['GET', 'POST'])
 def product():
     edition = InfoEditions.query.all()
-    return render_template('product.html', edition=edition)
-
+    return render_template('product.html', title=_('Product'), edition=edition)
 
 @bp.route('/about', methods=['GET', 'POST'])
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title=_('About'))
 
 
 @bp.route('/products/standard', methods=['GET', 'POST'])
@@ -80,7 +73,7 @@ def standard():
     link = InfoEditions.query.all()
     intro = InfoEditions.query.filter_by(id=1)
     edition = InfoEditions_desc.query.filter_by(infoeditions_id=1).all()
-    return render_template('standard_products.html', edition=edition, link=link, intro=intro)
+    return render_template('standard_products.html', title=_('Standard'), edition=edition, link=link, intro=intro)
 
 
 @bp.route('/products/enterprise', methods=['GET', 'POST'])
@@ -88,7 +81,7 @@ def enterprise():
     link = InfoEditions.query.all()
     intro = InfoEditions.query.filter_by(id=2)
     edition = InfoEditions_desc.query.filter_by(infoeditions_id=2).all()
-    return render_template('standard_products.html', edition=edition, link=link, intro=intro)
+    return render_template('standard_products.html', title=_('Enterprise'), edition=edition, link=link, intro=intro)
 
 
 @bp.route('/products/cluster', methods=['GET', 'POST'])
@@ -96,53 +89,53 @@ def cluster():
     link = InfoEditions.query.all()
     intro = InfoEditions.query.filter_by(id=3)
     edition = InfoEditions_desc.query.filter_by(infoeditions_id=3).all()
-    return render_template('standard_products.html', edition=edition, link=link, intro=intro)
+    return render_template('standard_products.html', title=_('Cluster'), edition=edition, link=link, intro=intro)
 
 
 @bp.route('/cloud', methods=['GET', 'POST'])
 def cloud():
     delivers1 = CloudService.query.filter_by(even=1)
     delivers2 = CloudService.query.filter_by(even=2)
-    return render_template('cloud.html', delivers1=delivers1, delivers2=delivers2)
+    return render_template('cloud.html', title=_('Cloud'), delivers1=delivers1, delivers2=delivers2)
 
 
 @bp.route('/services', methods=['GET', 'POST'])
 def services():
     service = Service.query.all()
-    return render_template('services.html', service=service)
+    return render_template('services.html', title=_('Services'), service=service)
 
 
 @bp.route('/training', methods=['GET', 'POST'])
 def training():
     link = Service.query.all()
     st = ServiceType.query.filter_by(service_id=1)
-    return render_template('training.html', link=link, st=st)
+    return render_template('training.html', title=_('Training'), link=link, st=st)
 
 
 @bp.route('/certification', methods=['GET', 'POST'])
 def certification():
     link = Service.query.all()
     st = ServiceType.query.filter_by(service_id=2)
-    return render_template('certification.html', link=link, st=st)
+    return render_template('certification.html', title=_('Certification'), link=link, st=st)
 
 
 @bp.route('/support', methods=['GET', 'POST'])
 def support():
     link = Service.query.all()
     st = ServiceType.query.filter_by(service_id=3).all()
-    return render_template('support.html', link=link, st=st)
+    return render_template('support.html', title=_('Support'), link=link, st=st)
 
 
 @bp.route('/contact', methods=['GET', 'POST'])
 def contact():
     contact = Contact.query.all()
-    return render_template('contact.html', contact=contact)
+    return render_template('contact.html', title=_('Contact'), contact=contact)
 
 
 @bp.route('/why-mysql', methods=['GET', 'POST'])
 def why_mysql():
     wm = WhySQL.query.all()
-    return render_template('why-mysql.html', wm=wm)
+    return render_template('why-mysql.html', title=_('WhySQL'), wm=wm)
 
 
 @bp.route('/why-mysql/white-papers', methods=['GET', 'POST'])
@@ -150,7 +143,7 @@ def why_mysql_content():
     wm = WhySQL.query.all()
     t = WhySQL.query.filter_by(id=1)
     ct = WhySQLContent.query.filter_by(whysql_id=1).all()
-    return render_template('standard_mysql_content.html', wm=wm, ct=ct, t=t)
+    return render_template('standard_mysql_content.html', title=_('White Papers'), wm=wm, ct=ct, t=t)
 
 
 @bp.route('/why-mysql/presentations', methods=['GET', 'POST'])
@@ -158,13 +151,13 @@ def presentations():
     wm = WhySQL.query.all()
     t = WhySQL.query.filter_by(id=2)
     ct = WhySQLContent.query.filter_by(whysql_id=2).all()
-    return render_template('standard_mysql_content.html', wm=wm, ct=ct, t=t)
+    return render_template('standard_mysql_content.html', title=_('Presentations'), wm=wm, ct=ct, t=t)
 
 
 @bp.route('/why-mysql/tb', methods=['GET', 'POST'])
 def tb():
     wm = WhySQL.query.all()
-    return render_template('why-mysql-tb.html', wm=wm)
+    return render_template('why-mysql-tb.html', title=_('T and B'), wm=wm)
 
 
 @bp.route('/forum', methods=['GET', 'POST'])
