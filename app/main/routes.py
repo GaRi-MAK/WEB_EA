@@ -5,9 +5,9 @@ from flask_babel import _, get_locale
 from app import current_app, db
 from app.main.forms import EditProfileForm, PostForm, InfoEditionsForm, InfoEditionsDESCForm, CloudServiceForm, \
     MainProductForm, ServiceForm, ServiceTypeForm, PartnersContentForm, WhySQLForm, WhySQLContentForm, \
-    HowToBuyForm, ContactForm
+    HowToBuyForm, ContactForm, EventsForm
 from app.models import User, Post, InfoEditions, InfoEditions_desc, CloudService, MainProduct, \
-    Service, ServiceType, PartnersContent, WhySQL, WhySQLContent, HowToBuy, Contact
+    Service, ServiceType, PartnersContent, WhySQL, WhySQLContent, HowToBuy, Contact, Events
 from app.main import bp
 from functools import wraps
 
@@ -46,14 +46,21 @@ def partners():
     return render_template('partner.html', title=_('Partner'), partner=partner)
 
 
+@bp.route('/events', methods=['GET', 'POST'])
+def events():
+    event = Events.query.all()
+    return render_template('events.html', title=_('Events'), event=event)
+
+
 @bp.route('/buy-mysql', methods=['GET', 'POST'])
 def howtobuy():
     contact = Contact.query.all()
     htb = HowToBuy.query.all()
     return render_template('howtobuy.html', htb=htb, contact=contact)
+
+
 @bp.route('/buy-mysql', methods=['GET', 'POST'])
 def es():
-
     return render_template('events.html')
 
 
@@ -689,3 +696,45 @@ def edit_contacts_id(data_id):
         flash(_('Updated'))
         return redirect(url_for('main.edit_contacts'))
     return render_template('edit_database/EditContacts.html', form=form, contact=contact, update=True)
+
+
+@bp.route('/edit_events', methods=['GET', 'POST'])
+@is_admin
+def edit_events():
+    form = EventsForm()
+    events = Events.query.all()
+    if form.validate_on_submit():
+        event = Events(Events_title=form.Events_title.data, Events_time=form.Events_time.data,
+                       Events_city=form.Events_city.data,
+                       Events_country=form.Events_country.data, Events_intro=form.Events_intro.data)
+        db.session.add(event)
+        db.session.commit()
+        flash(_('Added'))
+        return redirect(url_for('main.edit_events'))
+    if request.method == 'POST':
+        del_form = request.form
+        for ID in del_form.to_dict():
+            record_id = ID
+        del_event = Events.query.filter_by(id=record_id).first()
+        db.session.delete(del_event)
+        db.session.commit()
+        flash(_('Deleted'))
+        return redirect(url_for('main.edit_events'))
+    return render_template("edit_database/EditEvents.html", form=form, events=events)
+
+
+@bp.route('/edit_events/<data_id>', methods=['GET', 'POST'])
+@is_admin
+def edit_events_id(data_id):
+    form = EventsForm()
+    event = Events.query.filter_by(id=data_id).first()
+    if form.validate_on_submit():
+        event.Events_title = form.Events_title.data
+        event.Events_time = form.Events_time.data
+        event.Events_city = form.Events_city.data
+        event.Events_country = form.Events_country.data
+        event.Events_intro = form.Events_intro.data
+        db.session.commit()
+        flash(_('Updated'))
+        return redirect(url_for('main.edit_events'))
+    return render_template('edit_database/EditEvents.html', form=form, event=event, update=True)

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block current_app_content %}
+    {{ wtf.quick_form(form) }}
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Time</th>
+            <th scope="col">City</th>
+            <th scope="col">Country</th>
+            <th scope="col">Intro</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if update %}
+            <tr>
+                <td scope="row">{{ event.Events_id }}</td>
+                <td>{{ event.Events_title }}</td>
+                <td>{{ event.Events_time }}</td>
+                <td>{{ event.Events_city }}</td>
+                <td>{{ event.Events_country }}</td>
+                <td>{{ event.Events_intro }}</td>
+            </tr>
+        {% else %}
+            {% for event in events %}
+                <tr>
+                    <td scope="row">{{ event.Events_id }}</td>
+                    <td>{{ event.Events_title }}</td>
+                    <td>{{ event.Events_time }}</td>
+                    <td>{{ event.Events_city }}</td>
+                    <td>{{ event.Events_country }}</td>
+                    <td>{{ event.Events_intro }}</td>
+                    <td>
+                        <form action="{{ url_for('main.edit_events') }}" method="post">
+                            <a class="btn btn-primary" href="/edit_contacts/{{ event.Events_id }}"
+                               role="button">Edit</a>
+                            <input class="btn btn-primary" type="submit" name="{{ event.Events_id }}" value="Del">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -92,3 +92,10 @@ class ContactForm(FlaskForm):
     email = TextAreaField(_l('Email of Information'))
     flag = TextAreaField(_l('Flag of Information'))
     submit = SubmitField(_l('Submit'))
+class EventsForm(FlaskForm):
+    Events_title = StringField(_l('Title of Events'))
+    Events_time = TextAreaField(_l('Time of Events'))
+    Events_city = TextAreaField(_l('City of Events'))
+    Events_country = TextAreaField(_l('Country of Events'))
+    Events_intro = TextAreaField(_l('Intro of Events'))
+    submit = SubmitField(_l('Submit'))
