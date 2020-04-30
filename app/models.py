@@ -156,3 +156,11 @@ class HowToBuy(db.Model):
     title = db.Column(db.String(100))
     content = db.Column(db.String(1000))
     url = db.Column(db.String(1000))
+
+class Contact(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    region = db.Column(db.String(100))
+    country = db.Column(db.String(100))
+    phone = db.Column(db.String(500))
+    email = db.Column(db.String(500))
+    flag = db.Column(db.String(500))

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block current_app_content %}
+    <div class="container col-md-12">
+        <div class="jumbotron jumbotron-fluid">
+            <h1>Events & Conferences</h1></div>
+        <div class="container  col-md-12">
+            <div class="media">
+                <div class="media-left">
+                    <img src="{{ url_for ('static', filename='img/Industry_Event.JPG') }}" class="media-object"/>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{ ad.title }}</h4>
+                    <p>{{ ad.intro }}</p>
+                    <p>{{ ad.intro }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
