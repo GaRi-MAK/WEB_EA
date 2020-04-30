@@ -164,3 +164,13 @@ class Contact(db.Model):
     phone = db.Column(db.String(500))
     email = db.Column(db.String(500))
     flag = db.Column(db.String(500))
+#owen{
+
+class Events(db.Model):
+    Events_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    Events_title = db.Column(db.String(100))
+    Events_time = db.Column(db.String(500))
+    Events_city = db.Column(db.String(500))
+    Events_country = db.Column(db.String(500))
+    Events_intro = db.Column(db.String(500))
+
