@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block current_app_content %}
+    {{ wtf.quick_form(form) }}
+    <hr>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">region</th>
+            <th scope="col">country</th>
+            <th scope="col">phone</th>
+            <th scope="col">email</th>
+            <th scope="col">flag</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if update %}
+            <tr>
+                <td scope="row">{{ contact.id }}</td>
+                <td>{{ contact.region }}</td>
+                <td>{{ contact.country }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.flag }}</td>
+            </tr>
+        {% else %}
+            {% for contact in contacts %}
+                <tr>
+                    <td scope="row">{{ contact.id }}</td>
+                    <td>{{ contact.region }}</td>
+                    <td>{{ contact.country }}</td>
+                    <td>{{ contact.phone }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.flag }}</td>
+                    <td>
+                        <form action="{{ url_for('main.edit_contacts') }}" method="post">
+                            <a class="btn btn-primary" href="/edit_contacts/{{ contact.id }}" role="button">Edit</a>
+                            <input class="btn btn-primary" type="submit" name="{{ contact.id }}" value="Del">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

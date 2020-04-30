@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block current_app_content %}
+    <div class="container" style="margin-top:40px">
+        <div class="col-md-3">
+            <ul class="list-group">
+                {% for a in wm %}
+                    <li class="list-group-item"><a href="{{ a.url }}"><i
+                            class="glyphicon glyphicon-play"></i> {{ a.name }}</a></li>
+                {% endfor %}
+                <li class="list-group-item"><a href="/why-mysql/tb"><i
+                        class="glyphicon glyphicon-play"></i>Benchmarks & TCO</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="right-content-bg">
+                <div class="jumbotron">
+                    <h1>Why MySQL?</h1></div>
+                <p>Many of the world's largest and fastest-growing organizations including Facebook, Google, Adobe,
+                    Alcatel Lucent and Zappos rely on MySQL to save time and money powering their high-volume Web sites,
+                    business-critical systems and packaged software.</p><br>
+
+                <p>Below you will find valuable resources including case studies and white papers that will help you
+                    implement cost-effective database solutions using MySQL.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

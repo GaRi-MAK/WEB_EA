@@ -5,9 +5,9 @@ from flask_babel import _, get_locale
 from app import current_app, db
 from app.main.forms import EditProfileForm, PostForm, InfoEditionsForm, InfoEditionsDESCForm, CloudServiceForm, \
     MainProductForm, ServiceForm, ServiceTypeForm, PartnersContentForm, WhySQLForm, WhySQLContentForm, \
-    HowToBuyForm
+    HowToBuyForm, ContactForm
 from app.models import User, Post, InfoEditions, InfoEditions_desc, CloudService, MainProduct, \
-    Service, ServiceType, PartnersContent, WhySQL, WhySQLContent, HowToBuy
+    Service, ServiceType, PartnersContent, WhySQL, WhySQLContent, HowToBuy, Contact
 from app.main import bp
 from functools import wraps
 
@@ -48,14 +48,24 @@ def partners():
 
 @bp.route('/buy-mysql', methods=['GET', 'POST'])
 def howtobuy():
+    contact = Contact.query.all()
     htb = HowToBuy.query.all()
-    return render_template('howtobuy.html', htb=htb)
+    return render_template('howtobuy.html', htb=htb, contact=contact)
+@bp.route('/buy-mysql', methods=['GET', 'POST'])
+def es():
+
+    return render_template('events.html')
 
 
 @bp.route('/product', methods=['GET', 'POST'])
 def product():
     edition = InfoEditions.query.all()
     return render_template('product.html', edition=edition)
+
+
+@bp.route('/about', methods=['GET', 'POST'])
+def about():
+    return render_template('about.html')
 
 
 @bp.route('/products/standard', methods=['GET', 'POST'])
@@ -116,6 +126,12 @@ def support():
     return render_template('support.html', link=link, st=st)
 
 
+@bp.route('/contact', methods=['GET', 'POST'])
+def contact():
+    contact = Contact.query.all()
+    return render_template('contact.html', contact=contact)
+
+
 @bp.route('/why-mysql', methods=['GET', 'POST'])
 def why_mysql():
     wm = WhySQL.query.all()
@@ -127,13 +143,15 @@ def why_mysql_content():
     wm = WhySQL.query.all()
     t = WhySQL.query.filter_by(id=1)
     ct = WhySQLContent.query.filter_by(whysql_id=1).all()
-    return render_template('standard_mysql_content.html', wm=wm, ct=ct,t=t)
+    return render_template('standard_mysql_content.html', wm=wm, ct=ct, t=t)
+
+
 @bp.route('/why-mysql/presentations', methods=['GET', 'POST'])
 def presentations():
     wm = WhySQL.query.all()
     t = WhySQL.query.filter_by(id=2)
     ct = WhySQLContent.query.filter_by(whysql_id=2).all()
-    return render_template('standard_mysql_content.html', wm=wm, ct=ct,t=t)
+    return render_template('standard_mysql_content.html', wm=wm, ct=ct, t=t)
 
 
 @bp.route('/why-mysql/tb', methods=['GET', 'POST'])
@@ -630,3 +648,44 @@ def edit_howtobuy_id(data_id):
         flash(_('Updated'))
         return redirect(url_for('main.edit_howtobuy'))
     return render_template('edit_database/InfoHTBForm.html', form=form, htb=htb, update=True)
+
+
+@bp.route('/edit_contacts', methods=['GET', 'POST'])
+@is_admin
+def edit_contacts():
+    form = ContactForm()
+    contacts = Contact.query.all()
+    if form.validate_on_submit():
+        contact = Contact(region=form.region.data, country=form.country.data, phone=form.phone.data,
+                          email=form.email.data, flag=form.flag.data)
+        db.session.add(contact)
+        db.session.commit()
+        flash(_('Added'))
+        return redirect(url_for('main.edit_contacts'))
+    if request.method == 'POST':
+        del_form = request.form
+        for ID in del_form.to_dict():
+            record_id = ID
+        del_contact = Contact.query.filter_by(id=record_id).first()
+        db.session.delete(del_contact)
+        db.session.commit()
+        flash(_('Deleted'))
+        return redirect(url_for('main.edit_contacts'))
+    return render_template('edit_database/EditContacts.html', form=form, contacts=contacts)
+
+
+@bp.route('/edit_contacts/<data_id>', methods=['GET', 'POST'])
+@is_admin
+def edit_contacts_id(data_id):
+    form = ContactForm()
+    contact = Contact.query.filter_by(id=data_id).first()
+    if form.validate_on_submit():
+        contact.region = form.region.data
+        contact.country = form.country.data
+        contact.phone = form.phone.data
+        contact.email = form.email.data
+        contact.flag = form.flag.data
+        db.session.commit()
+        flash(_('Updated'))
+        return redirect(url_for('main.edit_contacts'))
+    return render_template('edit_database/EditContacts.html', form=form, contact=contact, update=True)

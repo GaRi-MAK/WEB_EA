@@ -84,3 +84,11 @@ class HowToBuyForm(FlaskForm):
     content = TextAreaField(_l('Content'))
     url = TextAreaField(_l('Link of Item'))
     submit = SubmitField(_l('Submit'))
+
+class ContactForm(FlaskForm):
+    region = StringField(_l('Region of Information'))
+    country = TextAreaField(_l('Country of Information'))
+    phone = TextAreaField(_l('Phone of Information'))
+    email = TextAreaField(_l('Email of Information'))
+    flag = TextAreaField(_l('Flag of Information'))
+    submit = SubmitField(_l('Submit'))
