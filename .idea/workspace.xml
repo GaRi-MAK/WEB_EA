@@ -1,37 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="84c8b4a3-9722-453e-8d83-1b88273fe12a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/WEB_EA_MYSQL.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4773a967-a619-4942-ac30-f902f1ed58bd.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/microblog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WEB_EA_MYSQL.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5046bfc6-c3f6-498a-9d8d-6b627cfd5ee7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-exported-files.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/img/1091550.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/DatabaseIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_database/DatabaseIndex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/InfoCloudService.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_database/InfoCloudService.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/InfoEditionsDescription.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_database/InfoEditionsDescription.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/InfoEditionsForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_database/InfoEditionsForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/InfoMainProductForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_database/InfoMainProductForm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/UserList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/cloud.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/cloud.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/services.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/services.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/edit_database/DatabaseIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_database/DatabaseIndex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/edit_database/InfoHTBForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_database/InfoHTBForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/edit_database/InfoWhySQLContentForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_database/InfoWhySQLContentForm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/microblog.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/microblog.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/microblog.log.4" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/microblog.log.5" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.5" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/microblog.log.6" beforeDir="false" afterPath="$PROJECT_DIR$/logs/microblog.log.6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +55,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="bd11997f-3d49-4da4-b33f-7b9c4755b545" />
   <component name="ProjectId" id="1akbPBTWsICzZ25Hwy5b1d65J77" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -54,8 +69,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/run.py" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -80,6 +102,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -115,96 +138,54 @@
       <workItem from="1588115467855" duration="4153000" />
       <workItem from="1588149313622" duration="7406000" />
       <workItem from="1588176087107" duration="1247000" />
+      <workItem from="1607257258759" duration="4773000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="556" y="169" width="666" height="623" key="#Flask_(run.py)" timestamp="1587913021313">
-      <screen x="70" y="27" width="1648" height="901" />
+    <state x="421" y="81" key="FileChooserDialogImpl" timestamp="1607258260108">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="556" y="169" width="666" height="623" key="#Flask_(run.py)/70.27.1648.901@70.27.1648.901" timestamp="1587913021313" />
-    <state x="352" y="135" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587985140804">
-      <screen x="70" y="27" width="1648" height="901" />
+    <state x="421" y="81" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1607258260108" />
+    <state width="1237" height="123" key="GridCell.Tab.0.bottom" timestamp="1607261855572">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="55" y="153" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.3840.1053@0.27.3840.1053" timestamp="1587285194130" />
-    <state x="352" y="135" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/70.27.1648.901@70.27.1648.901" timestamp="1587985140804" />
-    <state x="1127" y="286" width="591" height="410" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587916619557">
-      <screen x="70" y="27" width="1648" height="901" />
+    <state width="1237" height="123" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1607261855572" />
+    <state width="1237" height="123" key="GridCell.Tab.0.center" timestamp="1607261855571">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="1127" y="286" width="591" height="410" key="#com.intellij.fileTypes.FileTypeChooser/70.27.1648.901@70.27.1648.901" timestamp="1587916619557" />
-    <state x="627" y="226" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587471417414">
-      <screen x="70" y="27" width="1648" height="901" />
+    <state width="1237" height="123" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1607261855571" />
+    <state width="1237" height="123" key="GridCell.Tab.0.left" timestamp="1607261855571">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="627" y="226" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/70.27.1648.901@70.27.1648.901" timestamp="1587471417414" />
-    <state x="677" y="235" width="424" height="491" key="FileChooserDialogImpl" timestamp="1587985139625">
-      <screen x="70" y="27" width="1648" height="901" />
+    <state width="1237" height="123" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1607261855571" />
+    <state width="1237" height="123" key="GridCell.Tab.0.right" timestamp="1607261855572">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="677" y="235" width="424" height="491" key="FileChooserDialogImpl/70.27.1648.901@70.27.1648.901" timestamp="1587985139625" />
-    <state width="1602" height="223" key="GridCell.Tab.0.bottom" timestamp="1588177334366">
-      <screen x="70" y="27" width="1648" height="901" />
+    <state width="1237" height="123" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1607261855572" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1607258287290">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1804" height="224" key="GridCell.Tab.0.bottom/0.27.3840.1053@0.27.3840.1053" timestamp="1587285286332" />
-    <state width="1598" height="224" key="GridCell.Tab.0.bottom/70.27.1644.897@70.27.1644.897" timestamp="1587296593169" />
-    <state width="1602" height="223" key="GridCell.Tab.0.bottom/70.27.1648.901@70.27.1648.901" timestamp="1588177334366" />
-    <state width="1602" height="223" key="GridCell.Tab.0.center" timestamp="1588177334365">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state width="1804" height="224" key="GridCell.Tab.0.center/0.27.3840.1053@0.27.3840.1053" timestamp="1587285286331" />
-    <state width="1598" height="224" key="GridCell.Tab.0.center/70.27.1644.897@70.27.1644.897" timestamp="1587296593167" />
-    <state width="1602" height="223" key="GridCell.Tab.0.center/70.27.1648.901@70.27.1648.901" timestamp="1588177334365" />
-    <state width="1602" height="223" key="GridCell.Tab.0.left" timestamp="1588177334365">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state width="1804" height="224" key="GridCell.Tab.0.left/0.27.3840.1053@0.27.3840.1053" timestamp="1587285286330" />
-    <state width="1598" height="224" key="GridCell.Tab.0.left/70.27.1644.897@70.27.1644.897" timestamp="1587296593167" />
-    <state width="1602" height="223" key="GridCell.Tab.0.left/70.27.1648.901@70.27.1648.901" timestamp="1588177334365" />
-    <state width="1602" height="223" key="GridCell.Tab.0.right" timestamp="1588177334366">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state width="1804" height="224" key="GridCell.Tab.0.right/0.27.3840.1053@0.27.3840.1053" timestamp="1587285286331" />
-    <state width="1598" height="224" key="GridCell.Tab.0.right/70.27.1644.897@70.27.1644.897" timestamp="1587296593168" />
-    <state width="1602" height="223" key="GridCell.Tab.0.right/70.27.1648.901@70.27.1648.901" timestamp="1588177334366" />
-    <state width="1602" height="279" key="GridCell.Tab.1.bottom" timestamp="1588163992899">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state width="1602" height="279" key="GridCell.Tab.1.bottom/70.27.1648.901@70.27.1648.901" timestamp="1588163992899" />
-    <state width="1602" height="279" key="GridCell.Tab.1.center" timestamp="1588163992897">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state width="1602" height="279" key="GridCell.Tab.1.center/70.27.1648.901@70.27.1648.901" timestamp="1588163992897" />
-    <state width="1602" height="279" key="GridCell.Tab.1.left" timestamp="1588163992896">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state width="1602" height="279" key="GridCell.Tab.1.left/70.27.1648.901@70.27.1648.901" timestamp="1588163992896" />
-    <state width="1602" height="279" key="GridCell.Tab.1.right" timestamp="1588163992898">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state width="1602" height="279" key="GridCell.Tab.1.right/70.27.1648.901@70.27.1648.901" timestamp="1588163992898" />
-    <state x="383" y="27" width="1125" height="901" key="SettingsEditor" timestamp="1587918155383">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state x="383" y="27" width="1125" height="901" key="SettingsEditor/70.27.1648.901@70.27.1648.901" timestamp="1587918155383" />
-    <state x="783" y="367" width="367" height="262" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1587988434795">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state x="783" y="367" width="367" height="262" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/70.27.1648.901@70.27.1648.901" timestamp="1587988434795" />
-    <state x="646" y="294" width="484" height="380" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1588103668085">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state x="645" y="293" width="484" height="372" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/70.27.1644.897@70.27.1644.897" timestamp="1587294412483" />
-    <state x="646" y="294" width="484" height="380" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/70.27.1648.901@70.27.1648.901" timestamp="1588103668085" />
-    <state x="619" y="369" width="540" height="223" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1587913042427">
-      <screen x="70" y="27" width="1648" height="901" />
-    </state>
-    <state x="619" y="369" width="540" height="223" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/70.27.1648.901@70.27.1648.901" timestamp="1587913042427" />
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1607258287290" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/webea$Flask.coverage" NAME="Flask (run.py) Coverage Results" MODIFIED="1587296077045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WEB_EA$Flask__run_py_.coverage" NAME="Flask (run.py) Coverage Results" MODIFIED="1587913736464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/webea$Flask.coverage" NAME="Flask (run.py) Coverage Results" MODIFIED="1587296077045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/webea$Flask__run_py_.coverage" NAME="Flask (run.py) Coverage Results" MODIFIED="1587524164767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/WEB_EA_MYSQL$Flask__run_py_.coverage" NAME="Flask (run.py) Coverage Results" MODIFIED="1588176936546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WEB_EA_MYSQL$Flask__run_py_.coverage" NAME="Flask (run.py) Coverage Results" MODIFIED="1607261855558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -91,86 +91,91 @@ class Post(db.Model):
         return '<Post {}>'.format(self.body)
 
 
-class InfoEditions(db.Model):
+class infoEditions(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
-    content = db.Column(db.String(500))
-    url = db.Column(db.String(500))
-    desc = db.relationship('InfoEditions_desc',backref='editions',lazy='dynamic')
+    content = db.Column(db.String(200))
+    url = db.Column(db.String(200))
+    desc = db.relationship('infoEditionsdesc', backref='editions', lazy='dynamic')
 
 
-class InfoEditions_desc(db.Model):
+class infoEditionsdesc(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
-    content = db.Column(db.String(500))
+    content = db.Column(db.String(200))
     infoeditions_id = db.Column(db.Integer, db.ForeignKey('info_editions.id'))
 
 
-class CloudService(db.Model):
+class cloudService(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
-    content = db.Column(db.String(500))
-    even = db.Column(db.String(500))
+    content = db.Column(db.String(200))
+    even = db.Column(db.String(200))
 
 
-
-class MainProduct(db.Model):
+class mainProduct(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
-    intro = db.Column(db.String(500))
-    url = db.Column(db.String(500))
-    icon = db.Column(db.String(500))
+    intro = db.Column(db.String(200))
+    url = db.Column(db.String(200))
+    icon = db.Column(db.String(200))
 
 
 class Service(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100))
-    intro = db.Column(db.String(500))
-    url = db.Column(db.String(500))
-    desc = db.relationship('ServiceType', backref='service', lazy='dynamic')
+    intro = db.Column(db.String(200))
+    url = db.Column(db.String(200))
+    desc = db.relationship('serviceType', backref='service', lazy='dynamic')
 
-class ServiceType(db.Model):
+
+class serviceType(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
-    content = db.Column(db.String(500))
+    content = db.Column(db.String(200))
     service_id = db.Column(db.Integer, db.ForeignKey("service.id"))
 
 
-class PartnersContent(db.Model):
+class partnersContent(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     c_title = db.Column(db.String(100))
-    content = db.Column(db.String(1000))
+    content = db.Column(db.String(240))
 
-class WhySQL(db.Model):
+
+class whysql(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100))
-    url = db.Column(db.String(1000))
-    content = db.relationship('WhySQLContent', backref='whysql', lazy='dynamic')
-class WhySQLContent(db.Model):
+    url = db.Column(db.String(240))
+    content = db.relationship('whysqlContent', backref='whysql', lazy='dynamic')
+
+
+class whysqlContent(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
-    content = db.Column(db.String(1000))
-    whysql_id = db.Column(db.Integer, db.ForeignKey("whySQL.id"))
-class HowToBuy(db.Model):
+    content = db.Column(db.String(240))
+    whysql_id = db.Column(db.Integer, db.ForeignKey("whysql.id"))
+
+
+class howtobuy(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(100))
-    content = db.Column(db.String(1000))
-    url = db.Column(db.String(1000))
+    content = db.Column(db.String(240))
+    url = db.Column(db.String(240))
+
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     region = db.Column(db.String(100))
     country = db.Column(db.String(100))
-    phone = db.Column(db.String(500))
-    email = db.Column(db.String(500))
-    flag = db.Column(db.String(500))
-#owen{
+    phone = db.Column(db.String(200))
+    email = db.Column(db.String(200))
+    flag = db.Column(db.String(200))
+
 
 class Events(db.Model):
     Events_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     Events_title = db.Column(db.String(100))
-    Events_time = db.Column(db.String(500))
-    Events_city = db.Column(db.String(500))
-    Events_country = db.Column(db.String(500))
-    Events_intro = db.Column(db.String(500))
-
+    Events_time = db.Column(db.String(200))
+    Events_city = db.Column(db.String(200))
+    Events_country = db.Column(db.String(200))
+    Events_intro = db.Column(db.String(200))

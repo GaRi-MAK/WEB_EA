@@ -6,8 +6,8 @@ from app import current_app, db
 from app.main.forms import EditProfileForm, PostForm, InfoEditionsForm, InfoEditionsDESCForm, CloudServiceForm, \
     MainProductForm, ServiceForm, ServiceTypeForm, PartnersContentForm, WhySQLForm, WhySQLContentForm, \
     HowToBuyForm, ContactForm, EventsForm
-from app.models import User, Post, InfoEditions, InfoEditions_desc, CloudService, MainProduct, \
-    Service, ServiceType, PartnersContent, WhySQL, WhySQLContent, HowToBuy, Contact, Events
+from app.models import User, Post, infoEditions, infoEditionsdesc, cloudService, mainProduct, \
+    Service, serviceType, partnersContent, whysql, whysqlContent, Contact, Events,howtobuy
 from app.main import bp
 from functools import wraps
 
@@ -36,13 +36,13 @@ def is_admin(func):
 
 @bp.route('/', methods=['GET', 'POST'])
 def home():
-    ads = MainProduct.query.all()
+    ads = mainProduct.query.all()
     return render_template('home.html', ads=ads)
 
 
 @bp.route('/partners', methods=['GET', 'POST'])
 def partners():
-    partner = PartnersContent.query.all()
+    partner = partnersContent.query.all()
     return render_template('partner.html', title=_('Partner'), partner=partner)
 
 
@@ -55,12 +55,12 @@ def events():
 @bp.route('/buy-mysql', methods=['GET', 'POST'])
 def howtobuy():
     contact = Contact.query.all()
-    htb = HowToBuy.query.all()
+    htb = howtobuy.query.all()
     return render_template('howtobuy.html', title=_('How To Buy'),htb=htb, contact=contact)
 
 @bp.route('/product', methods=['GET', 'POST'])
 def product():
-    edition = InfoEditions.query.all()
+    edition = infoEditions.query.all()
     return render_template('product.html', title=_('Product'), edition=edition)
 
 @bp.route('/about', methods=['GET', 'POST'])
@@ -70,32 +70,32 @@ def about():
 
 @bp.route('/products/standard', methods=['GET', 'POST'])
 def standard():
-    link = InfoEditions.query.all()
-    intro = InfoEditions.query.filter_by(id=1)
-    edition = InfoEditions_desc.query.filter_by(infoeditions_id=1).all()
+    link = infoEditions.query.all()
+    intro = infoEditions.query.filter_by(id=1)
+    edition = infoEditionsdesc.query.filter_by(infoeditions_id=1).all()
     return render_template('standard_products.html', title=_('Standard'), edition=edition, link=link, intro=intro)
 
 
 @bp.route('/products/enterprise', methods=['GET', 'POST'])
 def enterprise():
-    link = InfoEditions.query.all()
-    intro = InfoEditions.query.filter_by(id=2)
-    edition = InfoEditions_desc.query.filter_by(infoeditions_id=2).all()
+    link = infoEditions.query.all()
+    intro = infoEditions.query.filter_by(id=2)
+    edition = infoEditionsdesc.query.filter_by(infoeditions_id=2).all()
     return render_template('standard_products.html', title=_('Enterprise'), edition=edition, link=link, intro=intro)
 
 
 @bp.route('/products/cluster', methods=['GET', 'POST'])
 def cluster():
-    link = InfoEditions.query.all()
-    intro = InfoEditions.query.filter_by(id=3)
-    edition = InfoEditions_desc.query.filter_by(infoeditions_id=3).all()
+    link = infoEditions.query.all()
+    intro = infoEditions.query.filter_by(id=3)
+    edition = infoEditionsdesc.query.filter_by(infoeditions_id=3).all()
     return render_template('standard_products.html', title=_('Cluster'), edition=edition, link=link, intro=intro)
 
 
 @bp.route('/cloud', methods=['GET', 'POST'])
 def cloud():
-    delivers1 = CloudService.query.filter_by(even=1)
-    delivers2 = CloudService.query.filter_by(even=2)
+    delivers1 = cloudService.query.filter_by(even=1)
+    delivers2 = cloudService.query.filter_by(even=2)
     return render_template('cloud.html', title=_('Cloud'), delivers1=delivers1, delivers2=delivers2)
 
 
@@ -108,21 +108,21 @@ def services():
 @bp.route('/training', methods=['GET', 'POST'])
 def training():
     link = Service.query.all()
-    st = ServiceType.query.filter_by(service_id=1)
+    st = serviceType.query.filter_by(service_id=1)
     return render_template('training.html', title=_('Training'), link=link, st=st)
 
 
 @bp.route('/certification', methods=['GET', 'POST'])
 def certification():
     link = Service.query.all()
-    st = ServiceType.query.filter_by(service_id=2)
+    st = serviceType.query.filter_by(service_id=2)
     return render_template('certification.html', title=_('Certification'), link=link, st=st)
 
 
 @bp.route('/support', methods=['GET', 'POST'])
 def support():
     link = Service.query.all()
-    st = ServiceType.query.filter_by(service_id=3).all()
+    st = serviceType.query.filter_by(service_id=3).all()
     return render_template('support.html', title=_('Support'), link=link, st=st)
 
 
@@ -134,29 +134,29 @@ def contact():
 
 @bp.route('/why-mysql', methods=['GET', 'POST'])
 def why_mysql():
-    wm = WhySQL.query.all()
-    return render_template('why-mysql.html', title=_('WhySQL'), wm=wm)
+    wm = whysql.query.all()
+    return render_template('why-mysql.html', title=_('whysql'), wm=wm)
 
 
 @bp.route('/why-mysql/white-papers', methods=['GET', 'POST'])
 def why_mysql_content():
-    wm = WhySQL.query.all()
-    t = WhySQL.query.filter_by(id=1)
-    ct = WhySQLContent.query.filter_by(whysql_id=1).all()
+    wm = whysql.query.all()
+    t = whysql.query.filter_by(id=1)
+    ct = whysqlContent.query.filter_by(whysql_id=1).all()
     return render_template('standard_mysql_content.html', title=_('White Papers'), wm=wm, ct=ct, t=t)
 
 
 @bp.route('/why-mysql/presentations', methods=['GET', 'POST'])
 def presentations():
-    wm = WhySQL.query.all()
-    t = WhySQL.query.filter_by(id=2)
-    ct = WhySQLContent.query.filter_by(whysql_id=2).all()
+    wm = whysql.query.all()
+    t = whysql.query.filter_by(id=2)
+    ct = whysqlContent.query.filter_by(whysql_id=2).all()
     return render_template('standard_mysql_content.html', title=_('Presentations'), wm=wm, ct=ct, t=t)
 
 
 @bp.route('/why-mysql/tb', methods=['GET', 'POST'])
 def tb():
-    wm = WhySQL.query.all()
+    wm = whysql.query.all()
     return render_template('why-mysql-tb.html', title=_('T and B'), wm=wm)
 
 
@@ -272,9 +272,9 @@ def database_index():
 @is_admin
 def edition_form():
     form = InfoEditionsForm()
-    editions = InfoEditions.query.all()
+    editions = infoEditions.query.all()
     if form.validate_on_submit():
-        edition = InfoEditions(title=form.title.data, content=form.content.data, url=form.url.data)
+        edition = infoEditions(title=form.title.data, content=form.content.data, url=form.url.data)
         db.session.add(edition)
         db.session.commit()
         flash(_('Added'))
@@ -283,7 +283,7 @@ def edition_form():
         del_form = request.form
         for ID in del_form.to_dict():
             record_id = ID
-        del_edition = InfoEditions.query.filter_by(id=record_id).first()
+        del_edition = infoEditions.query.filter_by(id=record_id).first()
         db.session.delete(del_edition)
         db.session.commit()
         flash(_('Deleted'))
@@ -295,7 +295,7 @@ def edition_form():
 @is_admin
 def edition_form_id(data_id):
     form = InfoEditionsForm()
-    edition = InfoEditions.query.filter_by(id=data_id).first()
+    edition = infoEditions.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
         edition.title = form.title.data
         edition.content = form.content.data
@@ -310,10 +310,10 @@ def edition_form_id(data_id):
 @is_admin
 def edition_desc_form():
     form = InfoEditionsDESCForm()
-    descriptions = InfoEditions_desc.query.all()
+    descriptions = infoEditionsdesc.query.all()
     if form.validate_on_submit():
-        description = InfoEditions_desc(title=form.title.data, content=form.content.data,
-                                        infoeditions_id=form.infoeditions_id.data)
+        description = infoEditionsdesc(title=form.title.data, content=form.content.data,
+                                       infoeditions_id=form.infoeditions_id.data)
         db.session.add(description)
         db.session.commit()
         flash(_('Added'))
@@ -322,7 +322,7 @@ def edition_desc_form():
         del_form = request.form
         for ID in del_form.to_dict():
             record_id = ID
-        del_edition_desc = InfoEditions_desc.query.filter_by(id=record_id).first()
+        del_edition_desc = infoEditionsdesc.query.filter_by(id=record_id).first()
         db.session.delete(del_edition_desc)
         db.session.commit()
         flash(_('Deleted'))
@@ -334,7 +334,7 @@ def edition_desc_form():
 @is_admin
 def edition_desc_form_id(data_id):
     form = InfoEditionsDESCForm()
-    description = InfoEditions.query.filter_by(id=data_id).first()
+    description = infoEditions.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
         description.title = form.title.data
         description.content = form.content.data
@@ -350,9 +350,9 @@ def edition_desc_form_id(data_id):
 @is_admin
 def cloudservice_form():
     form = CloudServiceForm()
-    services = CloudService.query.all()
+    services = cloudService.query.all()
     if form.validate_on_submit():
-        service = CloudService(title=form.title.data, content=form.content.data, even=form.even.data)
+        service = cloudService(title=form.title.data, content=form.content.data, even=form.even.data)
         db.session.add(service)
         db.session.commit()
         flash(_('Added'))
@@ -361,7 +361,7 @@ def cloudservice_form():
         del_form = request.form
         for ID in del_form.to_dict():
             record_id = ID
-        del_service = CloudService.query.filter_by(id=record_id).first()
+        del_service = cloudService.query.filter_by(id=record_id).first()
         db.session.delete(del_service)
         db.session.commit()
         flash(_('Deleted'))
@@ -373,7 +373,7 @@ def cloudservice_form():
 @is_admin
 def cloudservice_form_id(data_id):
     form = CloudServiceForm()
-    service = CloudService.query.filter_by(id=data_id).first()
+    service = cloudService.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
         service.title = form.title.data
         service.content = form.content.data
@@ -388,9 +388,9 @@ def cloudservice_form_id(data_id):
 @is_admin
 def info_main_productForm():
     form = MainProductForm()
-    mainproducts = MainProduct.query.all()
+    mainproducts = mainProduct.query.all()
     if form.validate_on_submit():
-        mainproduct = MainProduct(title=form.title.data, intro=form.intro.data,
+        mainproduct = mainProduct(title=form.title.data, intro=form.intro.data,
                                   url=form.url.data, icon=form.icon.data)
         db.session.add(mainproduct)
         db.session.commit()
@@ -400,7 +400,7 @@ def info_main_productForm():
         del_form = request.form
         for ID in del_form.to_dict():
             record_id = ID
-        del_mainproduct = MainProduct.query.filter_by(id=record_id).first()
+        del_mainproduct = mainProduct.query.filter_by(id=record_id).first()
         db.session.delete(del_mainproduct)
         db.session.commit()
         flash(_('Deleted'))
@@ -412,7 +412,7 @@ def info_main_productForm():
 @is_admin
 def info_main_productForm_id(data_id):
     form = MainProductForm()
-    mainproduct = MainProduct.query.filter_by(id=data_id).first()
+    mainproduct = mainProduct.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
         mainproduct.title = form.title.data
         mainproduct.intro = form.intro.data
@@ -428,9 +428,9 @@ def info_main_productForm_id(data_id):
 @is_admin
 def partners_content():
     form = PartnersContentForm()
-    contents = PartnersContent.query.all()
+    contents = partnersContent.query.all()
     if form.validate_on_submit():
-        content = PartnersContent(c_title=form.c_title.data, content=form.content.data)
+        content = partnersContent(c_title=form.c_title.data, content=form.content.data)
         db.session.add(content)
         db.session.commit()
         flash(_('Added'))
@@ -439,7 +439,7 @@ def partners_content():
         del_form = request.form
         for ID in del_form.to_dict():
             record_id = ID
-        del_content = PartnersContent.query.filter_by(id=record_id).first()
+        del_content = partnersContent.query.filter_by(id=record_id).first()
         db.session.delete(del_content)
         db.session.commit()
         flash(_('Deleted'))
@@ -451,7 +451,7 @@ def partners_content():
 @is_admin
 def partners_content_id(data_id):
     form = PartnersContentForm()
-    content = PartnersContent.query.filter_by(id=data_id).first()
+    content = partnersContent.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
         content.c_title = form.c_title.data
         content.content = form.content.data
@@ -503,9 +503,9 @@ def edit_service_id(data_id):
 @is_admin
 def edit_service_type():
     form = ServiceTypeForm()
-    servicet = ServiceType.query.all()
+    servicet = serviceType.query.all()
     if form.validate_on_submit():
-        st = ServiceType(title=form.title.data, content=form.content.data, service_id=form.service_id.data)
+        st = serviceType(title=form.title.data, content=form.content.data, service_id=form.service_id.data)
         db.session.add(st)
         db.session.commit()
         flash(_('Added'))
@@ -514,7 +514,7 @@ def edit_service_type():
         del_form = request.form
         for ID in del_form.to_dict():
             record_id = ID
-        del_service = ServiceType.query.filter_by(id=record_id).first()
+        del_service = serviceType.query.filter_by(id=record_id).first()
         db.session.delete(del_service)
         db.session.commit()
         flash(_('Deleted'))
@@ -526,7 +526,7 @@ def edit_service_type():
 @is_admin
 def edit_service_type_id(data_id):
     form = ServiceTypeForm()
-    st = ServiceType.query.filter_by(id=data_id).first()
+    st = serviceType.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
         st.title = form.title.data
         st.content = form.content.data
@@ -541,9 +541,9 @@ def edit_service_type_id(data_id):
 @is_admin
 def edit_whysql():
     form = WhySQLForm()
-    sqls = WhySQL.query.all()
+    sqls = whysql.query.all()
     if form.validate_on_submit():
-        sql = WhySQL(name=form.name.data, url=form.url.data)
+        sql = whysql(name=form.name.data, url=form.url.data)
         db.session.add(sql)
         db.session.commit()
         flash(_('Added'))
@@ -552,7 +552,7 @@ def edit_whysql():
         del_form = request.form
         for ID in del_form.to_dict():
             record_id = ID
-        del_sql = WhySQL.query.filter_by(id=record_id).first()
+        del_sql = whysql.query.filter_by(id=record_id).first()
         db.session.delete(del_sql)
         db.session.commit()
         flash(_('Deleted'))
@@ -564,7 +564,7 @@ def edit_whysql():
 @is_admin
 def edit_whysql_id(data_id):
     form = WhySQLForm()
-    sql = WhySQL.query.filter_by(id=data_id).first()
+    sql = whysql.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
         sql.name = form.name.data
         sql.url = form.url.data
@@ -578,9 +578,9 @@ def edit_whysql_id(data_id):
 @is_admin
 def edit_whysql_content():
     form = WhySQLContentForm()
-    sql_contents = WhySQLContent.query.all()
+    sql_contents = whysqlContent.query.all()
     if form.validate_on_submit():
-        sql_content = WhySQLContent(title=form.title.data, content=form.content.data, whysql_id=form.whysql_id.data)
+        sql_content = whysqlContent(title=form.title.data, content=form.content.data, whysql_id=form.whysql_id.data)
         db.session.add(sql_content)
         db.session.commit()
         flash(_('Added'))
@@ -589,7 +589,7 @@ def edit_whysql_content():
         del_form = request.form
         for ID in del_form.to_dict():
             record_id = ID
-        del_sql_content = WhySQLContent.query.filter_by(id=record_id).first()
+        del_sql_content = whysqlContent.query.filter_by(id=record_id).first()
         db.session.delete(del_sql_content)
         db.session.commit()
         flash(_('Deleted'))
@@ -601,7 +601,7 @@ def edit_whysql_content():
 @is_admin
 def edit_whysql_content_id(data_id):
     form = WhySQLContentForm()
-    sql_content = WhySQLContent.query.filter_by(id=data_id).first()
+    sql_content = whysqlContent.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
         sql_content.title = form.title.data
         sql_content.content = form.content.data
@@ -616,9 +616,9 @@ def edit_whysql_content_id(data_id):
 @is_admin
 def edit_howtobuy():
     form = HowToBuyForm()
-    htbs = HowToBuy.query.all()
+    htbs = howtobuy.query.all()
     if form.validate_on_submit():
-        htb = HowToBuy(title=form.title.data, content=form.content.data, url=form.url.data)
+        htb = htb(title=form.title.data, content=form.content.data, url=form.url.data)
         db.session.add(htb)
         db.session.commit()
         flash(_('Added'))
@@ -627,7 +627,7 @@ def edit_howtobuy():
         del_form = request.form
         for ID in del_form.to_dict():
             record_id = ID
-        del_htb = HowToBuy.query.filter_by(id=record_id).first()
+        del_htb = howtobuy.query.filter_by(id=record_id).first()
         db.session.delete(del_htb)
         db.session.commit()
         flash(_('Deleted'))
@@ -639,11 +639,11 @@ def edit_howtobuy():
 @is_admin
 def edit_howtobuy_id(data_id):
     form = HowToBuyForm()
-    htb = HowToBuy.query.filter_by(id=data_id).first()
+    htb = howtobuy.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
-        htb.title = form.title.data
-        htb.content = form.content.data
-        htb.url = form.url.data
+        howtobuy.title = form.title.data
+        howtobuy.content = form.content.data
+        howtobuy.url = form.url.data
         db.session.commit()
         flash(_('Updated'))
         return redirect(url_for('main.edit_howtobuy'))

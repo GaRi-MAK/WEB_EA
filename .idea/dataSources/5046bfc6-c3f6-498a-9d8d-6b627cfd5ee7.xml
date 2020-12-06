@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="app">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.18">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.19">
     <root id="1">
-      <ServerVersion>3.25.1</ServerVersion>
+      <ServerVersion>3.31.1</ServerVersion>
     </root>
     <schema id="2" parent="1" name="main">
       <Current>1</Current>
@@ -12,363 +12,423 @@
     <collation id="5" parent="1" name="RTRIM"/>
     <table id="6" parent="2" name="alembic_version"/>
     <table id="7" parent="2" name="cloud_service"/>
-    <table id="8" parent="2" name="followers"/>
-    <table id="9" parent="2" name="how_to_buy"/>
-    <table id="10" parent="2" name="info_editions"/>
-    <table id="11" parent="2" name="info_editions_desc"/>
-    <table id="12" parent="2" name="main_product"/>
-    <table id="13" parent="2" name="partners_content"/>
-    <table id="14" parent="2" name="post"/>
-    <table id="15" parent="2" name="service"/>
-    <table id="16" parent="2" name="service_type"/>
-    <table id="17" parent="2" name="sqlite_master">
+    <table id="8" parent="2" name="contact"/>
+    <table id="9" parent="2" name="events"/>
+    <table id="10" parent="2" name="followers"/>
+    <table id="11" parent="2" name="howtobuy"/>
+    <table id="12" parent="2" name="info_editions"/>
+    <table id="13" parent="2" name="info_editionsdesc"/>
+    <table id="14" parent="2" name="main_product"/>
+    <table id="15" parent="2" name="partners_content"/>
+    <table id="16" parent="2" name="post"/>
+    <table id="17" parent="2" name="service"/>
+    <table id="18" parent="2" name="service_type"/>
+    <table id="19" parent="2" name="sqlite_master">
       <System>1</System>
     </table>
-    <table id="18" parent="2" name="user"/>
-    <table id="19" parent="2" name="whySQL"/>
-    <table id="20" parent="2" name="why_sql_content"/>
-    <column id="21" parent="6" name="version_num">
+    <table id="20" parent="2" name="user"/>
+    <table id="21" parent="2" name="whysql"/>
+    <table id="22" parent="2" name="whysql_content"/>
+    <column id="23" parent="6" name="version_num">
       <Position>1</Position>
       <DataType>VARCHAR(32)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="22" parent="6" name="sqlite_autoindex_alembic_version_1">
+    <index id="24" parent="6" name="sqlite_autoindex_alembic_version_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version_num</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="23" parent="6" name="alembic_version_pkc">
+    <key id="25" parent="6" name="alembic_version_pkc">
       <ColNames>version_num</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_alembic_version_1</UnderlyingIndexName>
     </key>
-    <column id="24" parent="7" name="id">
+    <column id="26" parent="7" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="7" name="title">
+    <column id="27" parent="7" name="title">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="26" parent="7" name="content">
+    <column id="28" parent="7" name="content">
       <Position>3</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <column id="27" parent="7" name="even">
+    <column id="29" parent="7" name="even">
       <Position>4</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <key id="28" parent="7">
+    <key id="30" parent="7">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="29" parent="8" name="follower_id">
+    <column id="31" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="8" name="region">
+      <Position>2</Position>
+      <DataType>VARCHAR(100)|0s</DataType>
+    </column>
+    <column id="33" parent="8" name="country">
+      <Position>3</Position>
+      <DataType>VARCHAR(100)|0s</DataType>
+    </column>
+    <column id="34" parent="8" name="phone">
+      <Position>4</Position>
+      <DataType>VARCHAR(200)|0s</DataType>
+    </column>
+    <column id="35" parent="8" name="email">
+      <Position>5</Position>
+      <DataType>VARCHAR(200)|0s</DataType>
+    </column>
+    <column id="36" parent="8" name="flag">
+      <Position>6</Position>
+      <DataType>VARCHAR(200)|0s</DataType>
+    </column>
+    <key id="37" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="38" parent="9" name="Events_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="9" name="Events_title">
+      <Position>2</Position>
+      <DataType>VARCHAR(100)|0s</DataType>
+    </column>
+    <column id="40" parent="9" name="Events_time">
+      <Position>3</Position>
+      <DataType>VARCHAR(200)|0s</DataType>
+    </column>
+    <column id="41" parent="9" name="Events_city">
+      <Position>4</Position>
+      <DataType>VARCHAR(200)|0s</DataType>
+    </column>
+    <column id="42" parent="9" name="Events_country">
+      <Position>5</Position>
+      <DataType>VARCHAR(200)|0s</DataType>
+    </column>
+    <column id="43" parent="9" name="Events_intro">
+      <Position>6</Position>
+      <DataType>VARCHAR(200)|0s</DataType>
+    </column>
+    <key id="44" parent="9">
+      <ColNames>Events_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="10" name="follower_id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
     </column>
-    <column id="30" parent="8" name="followed_id">
+    <column id="46" parent="10" name="followed_id">
       <Position>2</Position>
       <DataType>INTEGER|0s</DataType>
     </column>
-    <foreign-key id="31" parent="8">
+    <foreign-key id="47" parent="10">
       <ColNames>follower_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="32" parent="8">
+    <foreign-key id="48" parent="10">
       <ColNames>followed_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="33" parent="9" name="id">
+    <column id="49" parent="11" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="9" name="title">
+    <column id="50" parent="11" name="title">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="35" parent="9" name="content">
+    <column id="51" parent="11" name="content">
       <Position>3</Position>
-      <DataType>VARCHAR(1000)|0s</DataType>
+      <DataType>VARCHAR(240)|0s</DataType>
     </column>
-    <column id="36" parent="9" name="url">
+    <column id="52" parent="11" name="url">
       <Position>4</Position>
-      <DataType>VARCHAR(1000)|0s</DataType>
+      <DataType>VARCHAR(240)|0s</DataType>
     </column>
-    <key id="37" parent="9">
+    <key id="53" parent="11">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="38" parent="10" name="id">
+    <column id="54" parent="12" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="10" name="title">
+    <column id="55" parent="12" name="title">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="40" parent="10" name="content">
+    <column id="56" parent="12" name="content">
       <Position>3</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <column id="41" parent="10" name="url">
+    <column id="57" parent="12" name="url">
       <Position>4</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <key id="42" parent="10">
+    <key id="58" parent="12">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="43" parent="11" name="id">
+    <column id="59" parent="13" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="44" parent="11" name="title">
+    <column id="60" parent="13" name="title">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="45" parent="11" name="content">
+    <column id="61" parent="13" name="content">
       <Position>3</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <column id="46" parent="11" name="infoeditions_id">
+    <column id="62" parent="13" name="infoeditions_id">
       <Position>4</Position>
       <DataType>INTEGER|0s</DataType>
     </column>
-    <key id="47" parent="11">
+    <key id="63" parent="13">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="48" parent="11">
+    <foreign-key id="64" parent="13">
       <ColNames>infoeditions_id</ColNames>
       <RefTableName>info_editions</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="49" parent="12" name="id">
+    <column id="65" parent="14" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="50" parent="12" name="title">
+    <column id="66" parent="14" name="title">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="51" parent="12" name="intro">
+    <column id="67" parent="14" name="intro">
       <Position>3</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <column id="52" parent="12" name="url">
+    <column id="68" parent="14" name="url">
       <Position>4</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <column id="53" parent="12" name="icon">
+    <column id="69" parent="14" name="icon">
       <Position>5</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <key id="54" parent="12">
+    <key id="70" parent="14">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="55" parent="13" name="id">
+    <column id="71" parent="15" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="56" parent="13" name="c_title">
+    <column id="72" parent="15" name="c_title">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="57" parent="13" name="content">
+    <column id="73" parent="15" name="content">
       <Position>3</Position>
-      <DataType>VARCHAR(1000)|0s</DataType>
+      <DataType>VARCHAR(240)|0s</DataType>
     </column>
-    <key id="58" parent="13">
+    <key id="74" parent="15">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="59" parent="14" name="id">
+    <column id="75" parent="16" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="60" parent="14" name="body">
+    <column id="76" parent="16" name="body">
       <Position>2</Position>
       <DataType>VARCHAR(140)|0s</DataType>
     </column>
-    <column id="61" parent="14" name="timestamp">
+    <column id="77" parent="16" name="timestamp">
       <Position>3</Position>
       <DataType>DATETIME|0s</DataType>
     </column>
-    <column id="62" parent="14" name="user_id">
+    <column id="78" parent="16" name="user_id">
       <Position>4</Position>
       <DataType>INTEGER|0s</DataType>
     </column>
-    <index id="63" parent="14" name="ix_post_timestamp">
+    <index id="79" parent="16" name="ix_post_timestamp">
       <ColNames>timestamp</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
-    <key id="64" parent="14">
+    <key id="80" parent="16">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="65" parent="14">
+    <foreign-key id="81" parent="16">
       <ColNames>user_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="66" parent="15" name="id">
+    <column id="82" parent="17" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="67" parent="15" name="name">
+    <column id="83" parent="17" name="name">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="68" parent="15" name="intro">
+    <column id="84" parent="17" name="intro">
       <Position>3</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <column id="69" parent="15" name="url">
+    <column id="85" parent="17" name="url">
       <Position>4</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <key id="70" parent="15">
+    <key id="86" parent="17">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="71" parent="16" name="id">
+    <column id="87" parent="18" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="72" parent="16" name="title">
+    <column id="88" parent="18" name="title">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="73" parent="16" name="content">
+    <column id="89" parent="18" name="content">
       <Position>3</Position>
-      <DataType>VARCHAR(500)|0s</DataType>
+      <DataType>VARCHAR(200)|0s</DataType>
     </column>
-    <column id="74" parent="16" name="service_id">
+    <column id="90" parent="18" name="service_id">
       <Position>4</Position>
       <DataType>INTEGER|0s</DataType>
     </column>
-    <key id="75" parent="16">
+    <key id="91" parent="18">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="76" parent="16">
+    <foreign-key id="92" parent="18">
       <ColNames>service_id</ColNames>
       <RefTableName>service</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="77" parent="17" name="type">
+    <column id="93" parent="19" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="78" parent="17" name="name">
+    <column id="94" parent="19" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="79" parent="17" name="tbl_name">
+    <column id="95" parent="19" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="80" parent="17" name="rootpage">
+    <column id="96" parent="19" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="81" parent="17" name="sql">
+    <column id="97" parent="19" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="82" parent="18" name="id">
+    <column id="98" parent="20" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="83" parent="18" name="username">
+    <column id="99" parent="20" name="username">
       <Position>2</Position>
       <DataType>VARCHAR(64)|0s</DataType>
     </column>
-    <column id="84" parent="18" name="email">
+    <column id="100" parent="20" name="email">
       <Position>3</Position>
       <DataType>VARCHAR(120)|0s</DataType>
     </column>
-    <column id="85" parent="18" name="password_hash">
+    <column id="101" parent="20" name="password_hash">
       <Position>4</Position>
       <DataType>VARCHAR(128)|0s</DataType>
     </column>
-    <column id="86" parent="18" name="about_me">
+    <column id="102" parent="20" name="about_me">
       <Position>5</Position>
       <DataType>VARCHAR(140)|0s</DataType>
     </column>
-    <column id="87" parent="18" name="last_seen">
+    <column id="103" parent="20" name="last_seen">
       <Position>6</Position>
       <DataType>DATETIME|0s</DataType>
     </column>
-    <index id="88" parent="18" name="ix_user_username">
+    <index id="104" parent="20" name="ix_user_username">
       <ColNames>username</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="89" parent="18" name="ix_user_email">
+    <index id="105" parent="20" name="ix_user_email">
       <ColNames>email</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="90" parent="18">
+    <key id="106" parent="20">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="91" parent="19" name="id">
+    <column id="107" parent="21" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="92" parent="19" name="name">
+    <column id="108" parent="21" name="name">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="93" parent="19" name="url">
+    <column id="109" parent="21" name="url">
       <Position>3</Position>
-      <DataType>VARCHAR(1000)|0s</DataType>
+      <DataType>VARCHAR(240)|0s</DataType>
     </column>
-    <key id="94" parent="19">
+    <key id="110" parent="21">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="95" parent="20" name="id">
+    <column id="111" parent="22" name="id">
       <Position>1</Position>
       <DataType>INTEGER|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="96" parent="20" name="title">
+    <column id="112" parent="22" name="title">
       <Position>2</Position>
       <DataType>VARCHAR(100)|0s</DataType>
     </column>
-    <column id="97" parent="20" name="content">
+    <column id="113" parent="22" name="content">
       <Position>3</Position>
-      <DataType>VARCHAR(1000)|0s</DataType>
+      <DataType>VARCHAR(240)|0s</DataType>
     </column>
-    <column id="98" parent="20" name="whysql_id">
+    <column id="114" parent="22" name="whysql_id">
       <Position>4</Position>
       <DataType>INTEGER|0s</DataType>
     </column>
-    <key id="99" parent="20">
+    <key id="115" parent="22">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="100" parent="20">
+    <foreign-key id="116" parent="22">
       <ColNames>whysql_id</ColNames>
-      <RefTableName>whySQL</RefTableName>
+      <RefTableName>whysql</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
   </database-model>

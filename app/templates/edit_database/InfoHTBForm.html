@@ -16,18 +16,18 @@
         <tbody>
         {% if update %}
             <tr>
-                <td scope="row">{{ htb.id }}</td>
-                <td>{{ htb.title }}</td>
-                <td>{{ htb.content }}</td>
-                <td>{{ htb.url }}</td>
+                <td scope="row">{{ howtobuy.id }}</td>
+                <td>{{ howtobuy.title }}</td>
+                <td>{{ howtobuy.content }}</td>
+                <td>{{ howtobuy.url }}</td>
             </tr>
         {% else %}
-            {% for htb in htbs %}
+            {% for howtobuy in htbs %}
                 <tr>
-                    <td scope="row">{{ htb.id }}</td>
-                    <td>{{ htb.title }}</td>
-                    <td>{{ htb.content }}</td>
-                    <td>{{ htb.url }}</td>
+                    <td scope="row">{{ howtobuy.id }}</td>
+                    <td>{{ howtobuy.title }}</td>
+                    <td>{{ howtobuy.content }}</td>
+                    <td>{{ howtobuy.url }}</td>
                     <td>
                         <form action="{{ url_for('main.edit_howtobuy') }}" method="post">
                             <a class="btn btn-primary" href="/info_howtobuy/{{ htb.id }}" role="button">Edit</a>
