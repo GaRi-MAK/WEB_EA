@@ -55,8 +55,7 @@ def events():
 @bp.route('/buy-mysql', methods=['GET', 'POST'])
 def howtobuy():
     contact = Contact.query.all()
-    htb = howtobuy.query.all()
-    return render_template('howtobuy.html', title=_('How To Buy'),htb=htb, contact=contact)
+    return render_template('howtobuy.html', title=_('How To Buy'),contact=contact)
 
 @bp.route('/product', methods=['GET', 'POST'])
 def product():
