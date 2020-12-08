@@ -5,11 +5,12 @@ from flask_babel import _, get_locale
 from app import current_app, db
 from app.main.forms import EditProfileForm, PostForm, InfoEditionsForm, InfoEditionsDESCForm, CloudServiceForm, \
     MainProductForm, ServiceForm, ServiceTypeForm, PartnersContentForm, WhySQLForm, WhySQLContentForm, \
-    HowToBuyForm, ContactForm, EventsForm
+    HowToBuyForm, ContactForm, EventsForm,CountryForm
 from app.models import User, Post, infoEditions, infoEditionsdesc, cloudService, mainProduct, \
-    Service, serviceType, partnersContent, whysql, whysqlContent, Contact, Events,howtobuy
+    Service, serviceType, partnersContent, whysql, whysqlContent, Contact, Events,howtobuy,Region,Country
 from app.main import bp
 from functools import wraps
+from werkzeug.utils import secure_filename
 
 
 @bp.before_request
@@ -55,8 +56,7 @@ def events():
 @bp.route('/buy-mysql', methods=['GET', 'POST'])
 def howtobuy():
     contact = Contact.query.all()
-    htb = howtobuy.query.all()
-    return render_template('howtobuy.html', title=_('How To Buy'),htb=htb, contact=contact)
+    return render_template('howtobuy.html', title=_('How To Buy'),contact=contact)
 
 @bp.route('/product', methods=['GET', 'POST'])
 def product():
@@ -649,15 +649,29 @@ def edit_howtobuy_id(data_id):
         return redirect(url_for('main.edit_howtobuy'))
     return render_template('edit_database/InfoHTBForm.html', form=form, htb=htb, update=True)
 
+@bp.route('/addcountry', methods=['GET', 'POST'])
+def addcountry():
+    form = CountryForm()
+    if form.validate_on_submit():
+        country=Country(country=form.country.data)
+        db.session.add(country)
+        db.session.commit()
+        flash(_('Added'))
+        return redirect(url_for('main.database_index'))
+    return render_template('edit_database/addcountry.html', form=form)
 
 @bp.route('/edit_contacts', methods=['GET', 'POST'])
-@is_admin
+# @is_admin
 def edit_contacts():
     form = ContactForm()
+    form.region.choices = [(s.id, s.region) for s in db.session.query(Region).all()]
+    form.country.choices = [(s.id, s.country) for s in db.session.query(Country).all()]
     contacts = Contact.query.all()
     if form.validate_on_submit():
-        contact = Contact(region=form.region.data, country=form.country.data, phone=form.phone.data,
-                          email=form.email.data, flag=form.flag.data)
+        filename = secure_filename(form.flag.data.filename)
+        form.flag.data.save('/WEB_EA/app/static/img/' + filename)
+        contact = Contact(region_id=form.region.data, country_id=form.country.data, phone=form.phone.data,
+                          email=form.email.data, flag=filename)
         db.session.add(contact)
         db.session.commit()
         flash(_('Added'))
@@ -678,13 +692,17 @@ def edit_contacts():
 @is_admin
 def edit_contacts_id(data_id):
     form = ContactForm()
+    form.region.choices = [(s.id, s.region) for s in db.session.query(Region).all()]
+    form.country.choices = [(s.id, s.country) for s in db.session.query(Country).all()]
     contact = Contact.query.filter_by(id=data_id).first()
     if form.validate_on_submit():
-        contact.region = form.region.data
-        contact.country = form.country.data
+        filename = secure_filename(form.flag.data.filename)
+        form.flag.data.save('/WEB_EA/app/static/img/' + filename)
+        contact.region_id = form.region.data
+        contact.country_id = form.country.data
         contact.phone = form.phone.data
         contact.email = form.email.data
-        contact.flag = form.flag.data
+        contact.flag = filename
         db.session.commit()
         flash(_('Updated'))
         return redirect(url_for('main.edit_contacts'))

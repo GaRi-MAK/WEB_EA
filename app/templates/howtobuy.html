@@ -1,40 +1,43 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 {% block current_app_content %}
-    <div class="container" style="margin-top:40px">
-        <div class="col-md-3">
-            <div id="menu">
-                <!--UdmComment-->
+<div class="container" style="margin-top:40px">
+    <div class="col-md-3">
+        <div id="menu">
+            <!--UdmComment-->
 
-                <div class="promo11">
-                    <h2 style="color: #e87c00; margin: 0px 0px 8px 0px">Contact Sales</h2>
-                    <p style="font-size: 90%;">
-                        {% for a in contact %}
-                            {{ a.country }}: <span class="nobr">{{ a.phone }}</span><br>
-                        {% endfor %}
-                    </p>
-                    <p><strong><a class="moreinfo" href="{{ url_for('main.contact') }}">Contact Us
-                        Online&nbsp;»</a></strong></p>
-                </div>
-
-                <!--/UdmComment-->
+            <div class="promo11">
+                <h2 style="color: #e87c00; margin: 0px 0px 8px 0px">Contact Sales</h2>
+                <p style="font-size: 90%;">
+                    {% for a in contact %}
+                    {{ a.country }}: <span class="nobr">{{ a.phone }}</span><br>
+                    {% endfor %}
+                </p>
+                <p><strong><a class="moreinfo" href="{{ url_for('main.contact') }}">Contact Us
+                    Online&nbsp;»</a></strong></p>
             </div>
-        </div>
-        <div class="col-md-9">
-            <div class="right-content-bg">
-                <div class="jumbotron">
-                    <div class="container">
-                        <h1 class="display-4">How to Buy MySQL Products and Services</h1>
-                    </div>
-                </div>
 
-                {% for a in htb %}
-                    <hr>
-                    <h2>{{ a.title }}</h2>
-                    <p>{{ a.content }}</p>
-                    <a href="{{ a.url }}">LEARN MORE</a>
-                {% endfor %}
-            </div>
+            <!--/UdmComment-->
         </div>
     </div>
+    <div class="col-md-9">
+        <div class="right-content-bg">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 class="display-4">How to Buy MySQL Products and Services</h1>
+                </div>
+            </div>
+
+
+            <hr>
+            <h2>Buy from the Oracle Store</h2>
+            <p>The easiest way to get MySQL Subscriptions, Licenses, Support and Training is to buy directly from the
+                Oracle Store.</p>
+            <hr>
+            <h2>Contact our Sales Team</h2>
+            <p>For volume discounts, or to place your order by phone, please contact the MySQL Sales Team. In the USA/Canada, you may call Toll Free +1-866-221-0634 or International +1-208-338-8100.</p>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

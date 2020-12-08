@@ -165,11 +165,29 @@ class howtobuy(db.Model):
 
 class Contact(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    region = db.Column(db.String(100))
-    country = db.Column(db.String(100))
+    region_id = db.Column(db.Integer, db.ForeignKey("region.id"))
+    country_id = db.Column(db.Integer, db.ForeignKey("country.id"))
     phone = db.Column(db.String(200))
     email = db.Column(db.String(200))
     flag = db.Column(db.String(200))
+
+
+class Region(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    region = db.Column(db.String(100))
+    regions = db.relationship('Contact', backref='region', lazy='dynamic')
+
+    def __repr__(self):
+        return '{}'.format(self.region)
+
+
+class Country(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    country = db.Column(db.String(100))
+    countrys = db.relationship('Contact', backref='country', lazy='dynamic')
+
+    def __repr__(self):
+        return ' {}'.format(self.country)
 
 
 class Events(db.Model):
