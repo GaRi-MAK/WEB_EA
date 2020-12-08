@@ -1,8 +1,8 @@
-"""test
+"""test db
 
-Revision ID: d976f370c4ce
+Revision ID: 6c81d8dab956
 Revises: 
-Create Date: 2020-12-06 20:54:38.910011
+Create Date: 2020-12-08 17:27:26.855441
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'd976f370c4ce'
+revision = '6c81d8dab956'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,13 +25,9 @@ def upgrade():
     sa.Column('even', sa.String(length=200), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('contact',
+    op.create_table('country',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
-    sa.Column('region', sa.String(length=100), nullable=True),
     sa.Column('country', sa.String(length=100), nullable=True),
-    sa.Column('phone', sa.String(length=200), nullable=True),
-    sa.Column('email', sa.String(length=200), nullable=True),
-    sa.Column('flag', sa.String(length=200), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('events',
@@ -71,6 +67,11 @@ def upgrade():
     sa.Column('content', sa.String(length=240), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('region',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('region', sa.String(length=100), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('service',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('name', sa.String(length=100), nullable=True),
@@ -93,6 +94,17 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('name', sa.String(length=100), nullable=True),
     sa.Column('url', sa.String(length=240), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('contact',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('region_id', sa.Integer(), nullable=True),
+    sa.Column('country_id', sa.Integer(), nullable=True),
+    sa.Column('phone', sa.String(length=200), nullable=True),
+    sa.Column('email', sa.String(length=200), nullable=True),
+    sa.Column('flag', sa.String(length=200), nullable=True),
+    sa.ForeignKeyConstraint(['country_id'], ['country.id'], ),
+    sa.ForeignKeyConstraint(['region_id'], ['region.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('followers',
@@ -145,16 +157,18 @@ def downgrade():
     op.drop_table('post')
     op.drop_table('info_editionsdesc')
     op.drop_table('followers')
+    op.drop_table('contact')
     op.drop_table('whysql')
     op.drop_index(op.f('ix_user_username'), table_name='user')
     op.drop_index(op.f('ix_user_email'), table_name='user')
     op.drop_table('user')
     op.drop_table('service')
+    op.drop_table('region')
     op.drop_table('partners_content')
     op.drop_table('main_product')
     op.drop_table('info_editions')
     op.drop_table('howtobuy')
     op.drop_table('events')
-    op.drop_table('contact')
+    op.drop_table('country')
     op.drop_table('cloud_service')
     # ### end Alembic commands ###
